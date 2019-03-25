@@ -93,25 +93,31 @@
                                         class="fa fa-fw fa-home"></i>Dashboard <span class="badge badge-success">6</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fa fa-fw fa-user-circle"></i>Supplier</a>
+                            <a class="nav-link" href="/supplier"><i class="fa fa-fw fa-user-circle"></i>Supplier</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fas fa-fw fa-chart-pie"></i>Produk</a>
+                            <a class="nav-link" href="/customer"><i class="fa fa-fw fa-user-circle"></i>Customer</a>
                         </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false"
-                               data-target="#submenu-4" aria-controls="submenu-4"><i class="fab fa-fw fa-wpforms"></i>Pembelian</a>
-                            <div id="submenu-4" class="collapse submenu" style="">
-                                <ul class="nav flex-column">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="pages/form-elements.html">Pengadaan</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="pages/form-validation.html">Detail Pembelian</a>
-                                    </li>
-                                </ul>
-                            </div>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/produk"><i class="fas fa-fw fa-chart-pie"></i>Produk</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pembelian"><i class="fab fa-fw fa-wpforms"></i>Pembelian</a>
+                        </li>
+                        {{--<li class="nav-item ">--}}
+                            {{--<a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false"--}}
+                               {{--data-target="#submenu-4" aria-controls="submenu-4"><i class="fab fa-fw fa-wpforms"></i>Pembelian</a>--}}
+                            {{--<div id="submenu-4" class="collapse submenu" style="">--}}
+                                {{--<ul class="nav flex-column">--}}
+                                    {{--<li class="nav-item">--}}
+                                        {{--<a class="nav-link" href="/pembelian">Pengadaan</a>--}}
+                                    {{--</li>--}}
+                                    {{--<li class="nav-item">--}}
+                                        {{--<a class="nav-link" href="pages/form-validation.html">Detail Pembelian</a>--}}
+                                    {{--</li>--}}
+                                {{--</ul>--}}
+                            {{--</div>--}}
+                        {{--</li>--}}
                         <li class="nav-item">
                             <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false"
                                data-target="#submenu-5" aria-controls="submenu-5"><i class="fas fa-fw fa-table"></i>Penjualan</a>

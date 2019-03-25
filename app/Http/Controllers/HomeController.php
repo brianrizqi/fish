@@ -14,10 +14,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
+//    public function __construct()
+//    {
 //        $this->middleware('auth');
-    }
+//    }
 
     /**
      * Show the application dashboard.
@@ -26,19 +26,24 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if (Auth::User()->level == 1) {
-            return view('admin');
+        if (Auth::check()) {
+            if (Auth::User()->level == 1) {
+                return view('admin');
+            } else {
+                $produk = DB::table('produk')
+                    ->orderBy('created_at', 'DESC')
+                    ->take(4)
+                    ->get();
+                return view('welcome', ['produk' => $produk]);
+            }
         } else {
-            $produk = DB::table('produk')
-                ->orderBy('created_at', 'DESC')
-                ->take(4)
-                ->get();
-            return view('welcome', ['produk' => $produk]);
+            return redirect('login');
         }
     }
 
     public function home()
     {
+        $this->middleware('auth');
         $produk = DB::table('produk')
             ->orderBy('created_at', 'DESC')
             ->take(4)

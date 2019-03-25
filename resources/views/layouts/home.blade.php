@@ -48,15 +48,15 @@
             </a>
 
             <div class="header-icons3 p-t-38 p-b-60 p-l-8">
-                <a href="#" class="header-wrapicon1 dis-block">
-                    <img src="images/icons/icon-header-02.png" class="header-icon1" alt="ICON">
-                    <span class="header-icons-noti">0</span>
+                <a href="/cart" class="header-wrapicon1 dis-block">
+                    <img src="{{url('images/icons/icon-header-02.png')}}" class="header-icon1" alt="ICON">
+                    {{--<span class="header-icons-noti"></span>--}}
                 </a>
 
                 <span class="linedivide1"></span>
 
                 <div class="header-wrapicon2">
-                    <img src="images/icons/icon-header-01.png" class="header-icon1 js-show-header-dropdown"
+                    <img src="{{url('images/icons/icon-header-01.png')}}" class="header-icon1 js-show-header-dropdown"
                          alt="ICON">
                     <!-- Header cart noti -->
                     <div class="header-cart header-dropdown">
@@ -78,6 +78,7 @@
                                     </a>
                                 </div>
                             @else
+                                {{Auth::user()->name}}
                                 <div class="header-cart-wrapbtn">
                                     <!-- Button -->
                                     <a href="{{ route('logout') }}"
@@ -86,7 +87,8 @@
                                        class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
                                         {{ __('Logout') }}
                                     </a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                          style="display: none;">
                                         @csrf
                                     </form>
                                 </div>
@@ -115,6 +117,12 @@
                         <li>
                             <a href="/contact">Contact</a>
                         </li>
+                        @guest
+                        @else
+                            <li>
+                                <a href="/contact">Pesan</a>
+                            </li>
+                        @endguest
                     </ul>
                 </nav>
             </div>
@@ -134,7 +142,7 @@
     <!-- Header Mobile -->
     <div class="wrap_header_mobile">
         <!-- Logo moblie -->
-        <a href="index.html" class="logo-mobile">
+        <a href="/home" class="logo-mobile">
             <img src="images/icons/logo.png" alt="IMG-LOGO">
         </a>
 
@@ -149,10 +157,12 @@
                 <span class="linedivide2"></span>
 
                 <div class="header-wrapicon2">
-                    <a href="#">
+                    <a href="/cart">
                         <img src="images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown"
                              alt="ICON">
-                        <span class="header-icons-noti">0</span>
+                        <span class="header-icons-noti">
+                            {{--{{count((array) \Darryldecode\Cart\Cart::getContent())}}--}}
+                        </span>
                     </a>
                 </div>
             </div>
@@ -188,19 +198,19 @@
                 </li>
 
                 <li class="item-menu-mobile">
-                    <a href="index.html">Home</a>
+                    <a href="/home">Home</a>
                 </li>
 
                 <li class="item-menu-mobile">
-                    <a href="product.html">Product</a>
+                    <a href="/produk">Product</a>
                 </li>
 
                 <li class="item-menu-mobile">
-                    <a href="about.html">About</a>
+                    <a href="/about">About</a>
                 </li>
 
                 <li class="item-menu-mobile">
-                    <a href="contact.html">Contact</a>
+                    <a href="/contact">Contact</a>
                 </li>
             </ul>
         </nav>
@@ -293,26 +303,6 @@
         </div>
 
         <div class="t-center p-l-15 p-r-15">
-            <a href="#">
-                <img class="h-size2" src="images/icons/paypal.png" alt="IMG-PAYPAL">
-            </a>
-
-            <a href="#">
-                <img class="h-size2" src="images/icons/visa.png" alt="IMG-VISA">
-            </a>
-
-            <a href="#">
-                <img class="h-size2" src="images/icons/mastercard.png" alt="IMG-MASTERCARD">
-            </a>
-
-            <a href="#">
-                <img class="h-size2" src="images/icons/express.png" alt="IMG-EXPRESS">
-            </a>
-
-            <a href="#">
-                <img class="h-size2" src="images/icons/discover.png" alt="IMG-DISCOVER">
-            </a>
-
             <div class="t-center s-text8 p-t-20">
                 Copyright © 2019 All rights reserved. | This web is made with <i class="fa fa-heart-o"
                                                                                  aria-hidden="true"></i> by <a
