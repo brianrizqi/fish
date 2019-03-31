@@ -59,7 +59,7 @@ class ProdukController extends Controller
             'quantity' => $request->jumlah
         ]);
         if ($add) {
-            return redirect('produk');
+            return redirect('gambar');
         }
     }
 

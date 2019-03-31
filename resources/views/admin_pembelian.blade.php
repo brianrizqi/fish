@@ -49,7 +49,7 @@
                             <div class="form-group">
                                 <label for="inputEmail">Supplier</label>
                                 <select class="form-control" name="supplier">
-                                    <option></option>
+                                    <option value="0" disabled selected>--Pilih Supplier--</option>
                                     @foreach($supplier as $item)
                                         <option value="{{$item->id_supplier}}">{{$item->nama}}</option>
                                     @endforeach

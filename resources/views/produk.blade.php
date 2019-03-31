@@ -71,7 +71,7 @@
                                 <!-- Block2 -->
                                 <div class="block2">
                                     <div class="block2-img wrap-pic-w of-hidden pos-relative">
-                                        <img src="images/item-02.jpg" alt="IMG-PRODUCT">
+                                        <img src="{{url('storage/gambar/'.$item->gambar)}}" alt="IMG-PRODUCT" style="width: 228px; height: 250px;">
                                     </div>
 
                                     <div class="block2-txt p-t-20">

@@ -11,7 +11,7 @@
                                 <div class="product-thumbnail">
                                     <div class="product-img-head">
                                         <div class="product-img">
-                                            <img src="assets/images/eco-product-img-1.png" alt="" class="img-fluid">
+                                            <img src="{{url('storage/gambar/'.$item->gambar)}}" alt="" class="img-fluid" style="width: 228px; height: 250px;">
                                         </div>
                                         <div class="">
                                         </div>

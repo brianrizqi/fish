@@ -44,7 +44,10 @@ class CartsController extends Controller
             'id' => $id,
             'price' => $produk->harga_jual,
             'name' => $produk->nama_produk,
-            'quantity' => $request->jumlah
+            'quantity' => $request->jumlah,
+            'attributes' => [
+                'gambar' => $produk->gambar
+            ]
         ]);
         if ($add) {
             return redirect('produk');

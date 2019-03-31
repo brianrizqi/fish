@@ -7,6 +7,8 @@ use App\Produk;
 use App\Supplier;
 use Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class PembelianController extends Controller
 {
@@ -24,6 +26,8 @@ class PembelianController extends Controller
 
     public function tambah_ikan(Request $request)
     {
+        $gambar = time() . '-' . $request->gambar->getClientOriginalName();
+        $request->file('gambar')->storeAs('public/gambar', $gambar);
         $add = Cart::add([
             'id' => $request->id,
             'price' => $request->harga_beli,
@@ -31,7 +35,8 @@ class PembelianController extends Controller
             'name' => $request->nama_produk,
             'attributes' => [
                 'deskripsi' => $request->deskripsi,
-                'harga_jual' => $request->harga_jual
+                'harga_jual' => $request->harga_jual,
+                'gambar' => $gambar
             ]
         ]);
         if ($add) {
@@ -68,6 +73,7 @@ class PembelianController extends Controller
             $produk->harga_beli = $item->price;
             $produk->harga_jual = $item->attributes['harga_jual'];
             $produk->deskripsi = $item->attributes['deskripsi'];
+            $produk->gambar = $item->attributes['gambar'];
             $produk->save();
         }
         Cart::clear();
@@ -121,6 +127,10 @@ class PembelianController extends Controller
 
     public function clear()
     {
+        $gambar = Cart::getContent();
+        foreach ($gambar as $item) {
+            Storage::delete('public/gambar/' . $item->attributes['gambar'] . '');
+        }
         Cart::clear();
         return redirect('pembelian');
     }

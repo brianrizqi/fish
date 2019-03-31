@@ -4,9 +4,9 @@
     <div class="container-fluid  dashboard-content">
         <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 col-12">
             <div class="card">
-                <h5 class="card-header">Horizontal Form</h5>
+                <h5 class="card-header">Form Pengadaan</h5>
                 <div class="card-body">
-                    <form method="POST" action="/pembelian/ikan" id="basicform">
+                    <form method="POST" action="/pembelian/ikan" id="basicform" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="inputUserName">Kode Ikan</label>
                             <input type="text" name="id" data-parsley-trigger="change"

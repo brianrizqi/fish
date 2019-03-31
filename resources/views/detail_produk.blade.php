@@ -7,7 +7,7 @@
                 <div class="wrap-slick3 flex-sb flex-w">
                     <div class="item-slick3">
                         <div class="wrap-pic-w">
-                            <img src="{{url('images/product-detail-01.jpg')}}" alt="IMG-PRODUCT">
+                            <img src="{{url('storage/gambar/'.$produk->gambar)}}" alt="IMG-PRODUCT">
                         </div>
                     </div>
                 </div>
@@ -43,16 +43,16 @@
 
                                 <div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10">
                                     <!-- Button -->
-                                    @guest
-                                        <a href="/login" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
-                                            Add to Cart
-                                        </a>
-                                    @elseguest
+                                    {{--@guest--}}
+                                        {{--<a href="/login" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">--}}
+                                            {{--Add to Cart--}}
+                                        {{--</a>--}}
+                                    {{--@elseguest--}}
                                         <button type="submit"
                                                 class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
                                             Add to Cart
                                         </button>
-                                    @endguest
+                                    {{--@endguest--}}
                                 </div>
                                 @csrf
                             </form>
