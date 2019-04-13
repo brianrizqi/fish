@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Ikan;
 use App\Pembelian;
 use App\Produk;
 use App\Supplier;
@@ -28,15 +29,18 @@ class PembelianController extends Controller
     {
         $gambar = time() . '-' . $request->gambar->getClientOriginalName();
         $request->file('gambar')->storeAs('public/gambar', $gambar);
+        $ikan = Ikan::where('id_ikan', $request->nama_produk)
+            ->first();
         $add = Cart::add([
             'id' => $request->id,
             'price' => $request->harga_beli,
             'quantity' => $request->jumlah,
-            'name' => $request->nama_produk,
+            'name' => $ikan->ikan,
             'attributes' => [
                 'deskripsi' => $request->deskripsi,
                 'harga_jual' => $request->harga_jual,
-                'gambar' => $gambar
+                'gambar' => $gambar,
+                'id_ikan' => $request->nama_produk
             ]
         ]);
         if ($add) {
@@ -51,13 +55,14 @@ class PembelianController extends Controller
      */
     public function create()
     {
-        return view('admin_tambah_pengadaan');
+        $ikan = Ikan::all();
+        return view('admin_tambah_pengadaan', ['ikan' => $ikan]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -67,7 +72,7 @@ class PembelianController extends Controller
             $produk = new Produk();
             $produk->id_produk = $item->id;
             $produk->id_supplier = $request->supplier;
-            $produk->nama_produk = $item->name;
+            $produk->id_ikan = $item->attributes['id_ikan'];
             $produk->tanggal = $request->tanggal;
             $produk->jumlah = $item->quantity;
             $produk->harga_beli = $item->price;
@@ -83,7 +88,7 @@ class PembelianController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Pembelian $pembelian
+     * @param \App\Pembelian $pembelian
      * @return \Illuminate\Http\Response
      */
     public function show(Pembelian $pembelian)
@@ -94,7 +99,7 @@ class PembelianController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Pembelian $pembelian
+     * @param \App\Pembelian $pembelian
      * @return \Illuminate\Http\Response
      */
     public function edit(Pembelian $pembelian)
@@ -105,8 +110,8 @@ class PembelianController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \App\Pembelian $pembelian
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Pembelian $pembelian
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Pembelian $pembelian)
@@ -117,7 +122,7 @@ class PembelianController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Pembelian $pembelian
+     * @param \App\Pembelian $pembelian
      * @return \Illuminate\Http\Response
      */
     public function destroy(Pembelian $pembelian)

@@ -73,12 +73,12 @@
                             <!-- Block2 -->
                             <div class="block2">
                                 <div class="block2-img wrap-pic-w of-hidden pos-relative">
-                                    <img src="images/item-02.jpg" alt="IMG-PRODUCT">
+                                    <img src="{{url('storage/gambar/'.$item->gambar)}}" alt="IMG-PRODUCT">
                                 </div>
 
                                 <div class="block2-txt p-t-20">
-                                    <a href="#" class="block2-name dis-block s-text3 p-b-5">
-                                        {{$item->nama_produk}}
+                                    <a href="/detail_produk/{{$item->id_produk}}" class="block2-name dis-block s-text3 p-b-5">
+                                        {{$item->ikan}}
                                     </a>
 
                                     <span class="block2-price m-text6 p-r-5">

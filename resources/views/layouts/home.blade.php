@@ -122,6 +122,15 @@
                             <li>
                                 <a href="/contact">Pesan</a>
                             </li>
+                            @if(Auth::user()->id_telegram == null)
+                                <li>
+                                    <a href="/telegram">Daftar Telegram</a>
+                                </li>
+                            @else
+                                <li>
+                                    <a href="#">Edit Telegram</a>
+                                </li>
+                            @endif
                         @endguest
                     </ul>
                 </nav>

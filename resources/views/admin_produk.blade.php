@@ -18,7 +18,7 @@
                                     </div>
                                     <div class="product-content">
                                         <div class="product-content-head">
-                                            <h3 class="product-title">{{$item->nama_produk}}</h3>
+                                            <h3 class="product-title">{{$item->ikan}}</h3>
                                             <div class="product-price">
                                                 Rp. {{number_format($item->harga_jual,0,".",".")}}</div>
                                         </div>

@@ -19,6 +19,9 @@ class ProdukController extends Controller
     public function index()
     {
         $produk = DB::table('produk')
+            ->join('ikan', function ($join) {
+                $join->on('ikan.id_ikan', '=', 'produk.id_ikan');
+            })
             ->orderBy('created_at', 'DESC')
             ->get();
         if (Auth::check()) {
@@ -45,7 +48,7 @@ class ProdukController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, $id)
@@ -66,7 +69,7 @@ class ProdukController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Produk $produk
+     * @param \App\Produk $produk
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -78,7 +81,7 @@ class ProdukController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Produk $produk
+     * @param \App\Produk $produk
      * @return \Illuminate\Http\Response
      */
     public function edit(Produk $produk)
@@ -89,8 +92,8 @@ class ProdukController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \App\Produk $produk
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Produk $produk
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Produk $produk)
@@ -101,7 +104,7 @@ class ProdukController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Produk $produk
+     * @param \App\Produk $produk
      * @return \Illuminate\Http\Response
      */
     public function destroy(Produk $produk)

@@ -76,7 +76,7 @@
 
                                     <div class="block2-txt p-t-20">
                                         <a href="/detail_produk/{{$item->id_produk}}" class="block2-name dis-block s-text3 p-b-5">
-                                            {{$item->nama_produk}}
+                                            {{$item->ikan}}
                                         </a>
 
                                         <span class="block2-price m-text6 p-r-5">

@@ -15,9 +15,15 @@
                         </div>
                         <div class="form-group">
                             <label for="inputUserName">Nama Ikan</label>
-                            <input type="text" name="nama_produk" data-parsley-trigger="change"
-                                   required=""
-                                   placeholder="Nama Ikan" autocomplete="off" class="form-control">
+                            {{--                            <input type="text" name="nama_produk" data-parsley-trigger="change"--}}
+                            {{--                                   required=""--}}
+                            {{--                                   placeholder="Nama Ikan" autocomplete="off" class="form-control">--}}
+                            <select name="nama_produk" class="form-control">
+                                <option value="0" disabled selected>--Pilih Ikan--</option>
+                                @foreach($ikan as $item)
+                                    <option value="{{$item->id_ikan}}">{{$item->ikan}}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="inputEmail">Harga Beli</label>
