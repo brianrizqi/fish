@@ -89,26 +89,43 @@
                             Menu
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" href="/home"><i
-                                        class="fa fa-fw fa-home"></i>Dashboard <span class="badge badge-success">6</span></a>
+                            <a class="nav-link {{ Request::segment(1) === 'home' ? 'active' : null }}"
+                               href="/home"><i class="fa fa-fw fa-home"></i>Dashboard <span class="badge badge-success">6</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/supplier"><i class="fa fa-fw fa-user-circle"></i>Supplier</a>
+                            <a class="nav-link {{ Request::segment(1) === 'supplier' ? 'active' : null }}"
+                               href="/supplier"><i class="fa fa-fw fa-user-circle"></i>Supplier</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/customer"><i class="fa fa-fw fa-user-circle"></i>Customer</a>
+                            <a class="nav-link {{ Request::segment(1) === 'customer' ? 'active' : null }}"
+                               href="/customer"><i class="fa fa-fw fa-user-circle"></i>Customer</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/ikan"><i class="fas fa-fw fa-chart-pie"></i>Ikan</a>
+                            <a class="nav-link {{ Request::segment(1) === 'ikan' ? 'active' : null }}"
+                               href="/ikan"><i class="fas fa-fw fa-chart-pie"></i>Ikan</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/produk"><i class="fas fa-fw fa-chart-pie"></i>Produk</a>
+                            <a class="nav-link {{ Request::segment(1) === 'produk' ? 'active' : null }}"
+                               href="/produk"><i class="fas fa-fw fa-chart-pie"></i>Produk</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/pembelian"><i class="fab fa-fw fa-wpforms"></i>Pembelian</a>
+                            <a class="nav-link {{ Request::segment(1) === 'pembelian' ? 'active' : null }}"
+                               href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2"><i class="fa fa-fw fa-rocket"></i>Pembelian</a>
+                            <div id="submenu-2" class="collapse submenu" style="">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link"
+                                           href="/pembelian">Pembelian <span class="badge badge-secondary">New</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/pengadaan">Pengadaan</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/penjualan"><i class="fab fa-fw fa-wpforms"></i>Penjualan</a>
+                            <a class="nav-link {{ Request::segment(1) === 'penjualan' ? 'active' : null }}"
+                               href="/penjualan"><i class="fab fa-fw fa-wpforms"></i>Penjualan</a>
                         </li>
                     </ul>
                 </div>

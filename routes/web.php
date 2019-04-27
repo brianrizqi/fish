@@ -34,6 +34,9 @@ Route::get('/customer', 'CustomerController@index');
 Route::delete('/customer/{id}', 'CustomerController@destroy');
 
 Route::get('/produk', 'ProdukController@index');
+Route::get('/produk/tambah', 'ProdukController@create');
+Route::get('/produk/{id}', 'ProdukController@edit');
+Route::post('/produk', 'ProdukController@store');
 
 Route::get('/ikan', 'IkanController@index');
 Route::get('/ikan/create', 'IkanController@create');
@@ -53,11 +56,14 @@ Route::post('/pembelian', 'PembelianController@store');
 Route::get('/pembelian/tambah', 'PembelianController@create');
 Route::post('/pembelian/ikan', 'PembelianController@tambah_ikan');
 Route::get('/pembelian/clear', 'PembelianController@clear');
+Route::get('/pembelian/{id}', 'PembelianController@detail');
+Route::get('/pengadaan', 'PembelianController@pengadaan');
 
 Route::get('/beli', 'PenjualanController@store');
 Route::get('/penjualan', 'PenjualanController@index');
-Route::get('/penjualan/{id}/edit', 'PenjualanController@edit');
+Route::get('/penjualan/{id}', 'PenjualanController@show');
 Route::delete('/penjualan/{id}', 'PenjualanController@destroy');
 
 Route::get('/telegram', 'UserController@telegram');
 Route::post('/telegram', 'UserController@store');
+

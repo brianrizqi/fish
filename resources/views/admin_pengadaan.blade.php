@@ -12,8 +12,7 @@
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5 style="display: inline">Tabel Supplier</h5>
-                        <a href="/ikan/create" class="btn btn-primary float-right">Tambah</a>
+                        <h5 style="display: inline">Tabel Pembelian</h5>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -21,23 +20,25 @@
                                 <thead>
                                 <tr>
                                     <th>Name</th>
-                                    <th>Stok</th>
+                                    <th>Tanggal</th>
+                                    <th>Total Harga</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($ikan as $item)
+                                @foreach($pembelian as $item)
                                     <tr>
-                                        <td>{{$item->ikan}}</td>
-                                        <td>{{$item->stok}}</td>
+                                        <td>{{$item->nama}}</td>
+                                        <td>{{$item->tanggal}}</td>
+                                        <td>{{$item->total}}</td>
                                         <td>
-                                            <form action="/ikan/edit/{{$item->id_ikan}}"
+                                            <form action="/pembelian/{{$item->id_pembelian}}"
                                                   style="display: inline">
                                                 <button class="btn btn-primary">
-                                                    <i class="fa fa-pencil-alt"></i>
+                                                    <i class="fa fa-eye"></i>
                                                 </button>
                                             </form>
-                                            <form action="/ikan/{{$item->id_ikan}}" method="POST"
+                                            <form action="/supplier/{{$item->id_supplier}}" method="POST"
                                                   style="display: inline">
                                                 <button class="btn btn-danger">
                                                     <i class="fa fa-trash"></i>

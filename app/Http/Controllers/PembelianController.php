@@ -2,17 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\DetailPembelian;
 use App\Ikan;
 use App\Pembelian;
 use App\Produk;
 use App\Supplier;
 use Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
 class PembelianController extends Controller
 {
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -27,21 +32,13 @@ class PembelianController extends Controller
 
     public function tambah_ikan(Request $request)
     {
-        $gambar = time() . '-' . $request->gambar->getClientOriginalName();
-        $request->file('gambar')->storeAs('public/gambar', $gambar);
         $ikan = Ikan::where('id_ikan', $request->nama_produk)
             ->first();
         $add = Cart::add([
-            'id' => $request->id,
+            'id' => $request->nama_produk,
             'price' => $request->harga_beli,
             'quantity' => $request->jumlah,
-            'name' => $ikan->ikan,
-            'attributes' => [
-                'deskripsi' => $request->deskripsi,
-                'harga_jual' => $request->harga_jual,
-                'gambar' => $gambar,
-                'id_ikan' => $request->nama_produk
-            ]
+            'name' => $ikan->ikan
         ]);
         if ($add) {
             return redirect('pembelian');
@@ -67,22 +64,35 @@ class PembelianController extends Controller
      */
     public function store(Request $request)
     {
+        $pembelian = new Pembelian();
+        $pembelian->id_supplier = $request->supplier;
+        $pembelian->tanggal = date("Y-m-d");
+        $pembelian->biaya_kirim = $request->biaya_kirim;
+        $pembelian->total = $request->total + $request->biaya_kirim;
+        $pembelian->save();
+        $idpembelian = DB::table('pembelian')
+            ->where('id_supplier', $request->supplier)
+            ->orderBy('created_at', 'DESC')
+            ->take(1)
+            ->first();
         $data = Cart::getContent();
         foreach ($data as $item) {
-            $produk = new Produk();
-            $produk->id_produk = $item->id;
-            $produk->id_supplier = $request->supplier;
-            $produk->id_ikan = $item->attributes['id_ikan'];
-            $produk->tanggal = $request->tanggal;
-            $produk->jumlah = $item->quantity;
-            $produk->harga_beli = $item->price;
-            $produk->harga_jual = $item->attributes['harga_jual'];
-            $produk->deskripsi = $item->attributes['deskripsi'];
-            $produk->gambar = $item->attributes['gambar'];
-            $produk->save();
+            $stok = Ikan::where("id_ikan", $item->id)
+                ->first();
+            $ikan = Ikan::where('id_ikan', $item->id)
+                ->update([
+                    'stok' => $stok->stok + $item->quantity,
+                ]);
+            $detail = new DetailPembelian();
+            $detail->id_pembelian = $idpembelian->id_pembelian;
+            $detail->id_ikan = $item->id;
+            $detail->jumlah = $item->quantity;
+            $detail->harga_beli = $item->price;
+            $detail->total_harga = $item->quantity * $item->price;
+            $detail->save();
         }
         Cart::clear();
-        return redirect('produk');
+        return redirect('pembelian');
     }
 
     /**
@@ -132,11 +142,30 @@ class PembelianController extends Controller
 
     public function clear()
     {
-        $gambar = Cart::getContent();
-        foreach ($gambar as $item) {
-            Storage::delete('public/gambar/' . $item->attributes['gambar'] . '');
-        }
+//        $gambar = Cart::getContent();
+//        foreach ($gambar as $item) {
+//            Storage::delete('public/gambar/' . $item->attributes['gambar'] . '');
+//        }
         Cart::clear();
         return redirect('pembelian');
+    }
+
+    public function pengadaan()
+    {
+        $pembelian = Pembelian::join('suppliers', function ($join) {
+            $join->on('suppliers.id_supplier', '=', 'pembelian.id_supplier');
+        })
+            ->get();
+        return view('admin_pengadaan', ['pembelian' => $pembelian]);
+    }
+
+    public function detail($id)
+    {
+        $detail = DetailPembelian::join('ikan', function ($join) {
+            $join->on('ikan.id_ikan', '=', 'detail_pembelian.id_ikan');
+        })
+            ->where('id_pembelian', $id)
+            ->get();
+        return view('admin_detail_pembelian', ['detail' => $detail]);
     }
 }

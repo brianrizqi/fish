@@ -120,7 +120,7 @@
                         @guest
                         @else
                             <li>
-                                <a href="/contact">Pesan</a>
+                                <a href="/penjualan">Transaksi</a>
                             </li>
                             @if(Auth::user()->id_telegram == null)
                                 <li>

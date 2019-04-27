@@ -12,40 +12,26 @@
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5 style="display: inline">Tabel Supplier</h5>
-                        <a href="/ikan/create" class="btn btn-primary float-right">Tambah</a>
+                        <h5 style="display: inline">Tabel Detail Pembelian</h5>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered first">
                                 <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Stok</th>
-                                    <th>Action</th>
+                                    <th>Ikan</th>
+                                    <th>Jumlah</th>
+                                    <th>Harga Beli</th>
+                                    <th>Total</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($ikan as $item)
+                                @foreach($detail as $item)
                                     <tr>
                                         <td>{{$item->ikan}}</td>
-                                        <td>{{$item->stok}}</td>
-                                        <td>
-                                            <form action="/ikan/edit/{{$item->id_ikan}}"
-                                                  style="display: inline">
-                                                <button class="btn btn-primary">
-                                                    <i class="fa fa-pencil-alt"></i>
-                                                </button>
-                                            </form>
-                                            <form action="/ikan/{{$item->id_ikan}}" method="POST"
-                                                  style="display: inline">
-                                                <button class="btn btn-danger">
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
-                                                {{csrf_field()}}
-                                                <input type="hidden" name="_method" value="DELETE">
-                                            </form>
-                                        </td>
+                                        <td>{{$item->jumlah}}</td>
+                                        <td>{{$item->harga_beli}}</td>
+                                        <td>{{$item->harga_beli * $item->jumlah}}</td>
                                     </tr>
                                 @endforeach
                             </table>

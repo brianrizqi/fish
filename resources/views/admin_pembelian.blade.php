@@ -17,17 +17,23 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Harga Beli</th>
-                                    <th>Harga Jual</th>
                                     <th>Jumlah</th>
+                                    <th>Total Harga</th>
                                 </tr>
                                 </thead>
                                 <tbody>
+                                <?php $no = 0;
+                                $totalBayar = 0;
+                                ?>
                                 @foreach($data as $item)
+                                    <?php
+                                    $totalBayar += $item->quantity * $item->price;
+                                    $no++?>
                                     <tr>
                                         <td>{{$item->name}}</td>
                                         <td>{{$item->price}}</td>
-                                        <td>{{$item->attributes['harga_jual']}}</td>
                                         <td>{{$item->quantity}}</td>
+                                        <td>{{$item->quantity * $item->price}}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -55,6 +61,10 @@
                                     @endforeach
                                 </select>
                             </div>
+                            <div class="form-group">
+                                <label for="inputEmail">Biaya Kirim</label>
+                                <input type="number" name="biaya_kirim" class="form-control" placeholder="Biaya Kirim">
+                            </div>
                             <div class="row">
                                 <div class="col-sm-3 pb-2 pb-sm-4 pb-lg-0 pr-0">
                                 </div>
@@ -64,6 +74,7 @@
                                     </p>
                                 </div>
                             </div>
+                            <input name="total" value="{{$totalBayar}}" type="hidden">
                             @csrf
                         </form>
                     </div>

@@ -25,6 +25,10 @@ class PenjualanController extends Controller
                 ->orderBy('penjualan.created_at', 'DESC')
                 ->get();
             return view('admin_penjualan', ['penjualan' => $penjualan]);
+        } else {
+            $penjualan = Penjualan::where('id_user', Auth::User()->id)
+                ->get();
+            return view('penjualan', ['penjualan' => $penjualan]);
         }
     }
 
@@ -41,21 +45,26 @@ class PenjualanController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
+        $data = Cart::getContent();
+        $total = 0;
+        foreach ($data as $datum) {
+            $total += $datum->quantity * $datum->price;
+        }
         $penjualan = new Penjualan();
         $penjualan->id_user = Auth::User()->id;
         $penjualan->tanggal = date("Y-m-d");
+        $penjualan->total_harga = $total;
         $penjualan->save();
         $id_penjualan = DB::table('penjualan')
             ->where('id_user', Auth::User()->id)
             ->orderBy('created_at', 'DESC')
             ->take(1)
             ->first();
-        $data = Cart::getContent();
         foreach ($data as $item) {
             $detail = new DetailPenjualan();
             $detail->id_penjualan = $id_penjualan->id_penjualan;
@@ -66,42 +75,52 @@ class PenjualanController extends Controller
             $detail->save();
         }
         Cart::clear();
-        return redirect('cart');
+        return redirect('penjualan');
 
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Penjualan $penjualan
+     * @param \App\Penjualan $penjualan
      * @return \Illuminate\Http\Response
      */
-    public function show(Penjualan $penjualan)
+    public function show($id)
     {
-        //
+        if (Auth::User()->level == 1) {
+            $detail = DetailPenjualan::join('produk', function ($join) {
+                $join->on('produk.id_produk', '=', 'detail_penjualan.id_produk');
+            })
+                ->where('id_penjualan', $id)
+                ->get();
+            return view('admin_detail_penjualan', ['detail' => $detail]);
+        } else {
+            $detail = DetailPenjualan::join('produk', function ($join) {
+                $join->on('produk.id_produk', '=', 'detail_penjualan.id_produk');
+            })
+                ->where('id_penjualan', $id)
+                ->select('nama_produk','detail_penjualan.jumlah','total_harga','harga_jual')
+                ->get();
+            return view('detail_penjualan', ['detail' => $detail]);
+        }
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Penjualan $penjualan
+     * @param \App\Penjualan $penjualan
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $detail = DetailPenjualan::join('produk', function ($join) {
-            $join->on('produk.id_produk', '=', 'detail_penjualan.id_produk');
-        })
-            ->where('id_penjualan', $id)
-            ->get();
-        return view('admin_detail_penjualan', ['detail' => $detail]);
+
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \App\Penjualan $penjualan
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Penjualan $penjualan
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Penjualan $penjualan)
@@ -112,7 +131,7 @@ class PenjualanController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Penjualan $penjualan
+     * @param \App\Penjualan $penjualan
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

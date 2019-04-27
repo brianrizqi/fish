@@ -41,10 +41,10 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <form action="/penjualan/{{$item->id_penjualan}}/edit"
+                                            <form action="/penjualan/{{$item->id_penjualan}}"
                                                   style="display: inline">
                                                 <button class="btn btn-primary">
-                                                    <i class="fa fa-pencil-alt"></i>
+                                                    <i class="fa fa-eye"></i>
                                                 </button>
                                             </form>
                                             <form action="/penjualan/{{$item->id_penjualan}}" method="POST"

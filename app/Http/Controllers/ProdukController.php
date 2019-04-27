@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Ikan;
 use App\Produk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -42,7 +43,8 @@ class ProdukController extends Controller
      */
     public function create()
     {
-        //
+        $ikan = Ikan::all();
+        return view('admin_tambah_produk', ['ikan' => $ikan]);
     }
 
     /**
@@ -51,19 +53,20 @@ class ProdukController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
-        $produk = Produk::where('id_produk', $id)
-            ->first();
-        $add = Cart::add([
-            'id' => $id,
-            'price' => $produk->harga_jual,
-            'name' => $produk->nama_produk,
-            'quantity' => $request->jumlah
-        ]);
-        if ($add) {
-            return redirect('gambar');
-        }
+        $gambar = time() . '-' . $request->gambar->getClientOriginalName();
+        $request->file('gambar')->storeAs('public/gambar', $gambar);
+        $produk = new Produk();
+        $produk->id_ikan = $request->ikan;
+        $produk->nama_produk = $request->nama_produk;
+        $produk->harga_jual = $request->harga_jual;
+        $produk->jumlah = $request->jumlah;
+        $produk->tanggal = date('Y-m-d');
+        $produk->deskripsi = $request->deskripsi;
+        $produk->gambar = $gambar;
+        $produk->save();
+        return redirect('produk');
     }
 
     /**
@@ -74,7 +77,11 @@ class ProdukController extends Controller
      */
     public function show($id)
     {
-        $produk = Produk::where('id_produk', $id)->first();
+        $produk = Produk::where('id_produk', $id)
+            ->join('ikan', function ($join) {
+                $join->on('ikan.id_ikan', '=', 'produk.id_ikan');
+            })
+            ->first();
         return view('detail_produk', ['produk' => $produk]);
     }
 
@@ -84,9 +91,15 @@ class ProdukController extends Controller
      * @param \App\Produk $produk
      * @return \Illuminate\Http\Response
      */
-    public function edit(Produk $produk)
+    public function edit($id)
     {
-        //
+        $produk = Produk::where('id_produk', $id)
+            ->join('ikan', function ($join) {
+                $join->on('ikan.id_ikan', '=', 'produk.id_ikan');
+            })
+            ->first();
+        $ikan = Ikan::all();
+        return view('admin_edit_produk', ['produk' => $produk, 'ikan' => $ikan]);
     }
 
     /**

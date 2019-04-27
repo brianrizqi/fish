@@ -13,7 +13,9 @@
                 <div class="card">
                     <div class="card-header">
                         <h5 style="display: inline">Tabel Supplier</h5>
-                        <a href="/tambah_supplier" class="btn btn-primary float-right">Tambah</a>
+                        <a href="/pembelian/tambah" class="btn btn-primary float-right">Verif</a>
+                        <a href="/pembelian/clear" class="btn btn-danger float-right"
+                           style="margin-right: 10px;">Cancel</a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -22,9 +24,8 @@
                                 <tr>
                                     <th>Kode Penjualan</th>
                                     <th>Nama Produk</th>
-                                    <th>Tanggal</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
+                                    <th>Jumlah</th>
+                                    <th>Total Harga</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -32,30 +33,8 @@
                                     <tr>
                                         <td>{{$item->id_penjualan}}</td>
                                         <td>{{$item->nama_produk}}</td>
-                                        <td>{{$item->tanggal}}</td>
-                                        <td>
-                                            @if($item->status == 0)
-                                                {{"Belum Bayar"}}
-                                            @else
-                                                {{"Sudah Bayar"}}
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <form action="/penjualan/{{$item->id_penjualan}}/edit"
-                                                  style="display: inline">
-                                                <button class="btn btn-primary">
-                                                    <i class="fa fa-pencil-alt"></i>
-                                                </button>
-                                            </form>
-                                            <form action="/penjualan/{{$item->id_penjualan}}" method="POST"
-                                                  style="display: inline">
-                                                <button class="btn btn-danger">
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
-                                                {{csrf_field()}}
-                                                <input type="hidden" name="_method" value="DELETE">
-                                            </form>
-                                        </td>
+                                        <td>{{$item->jumlah}}</td>
+                                        <td>Rp. {{number_format($item->total_harga,0,".",".")}}</td>
                                     </tr>
                                 @endforeach
                             </table>

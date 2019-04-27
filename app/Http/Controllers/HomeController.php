@@ -31,6 +31,9 @@ class HomeController extends Controller
                 return view('admin');
             } else {
                 $produk = DB::table('produk')
+                    ->join('ikan', function ($join) {
+                        $join->on('ikan.id_ikan', '=', 'produk.id_ikan');
+                    })
                     ->orderBy('created_at', 'DESC')
                     ->take(4)
                     ->get();
