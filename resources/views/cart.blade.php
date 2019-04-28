@@ -1,72 +1,123 @@
 @extends('layouts.home')
 @section('title','Cart')
 @section('content')
-    <section class="cart bgwhite p-t-70 p-b-100">
+    <!-- Breadcrumb -->
+    <div class="breadcrumb_wrapper">
         <div class="container">
-            <div class="container-table-cart pos-relative">
-                <div class="wrap-table-shopping-cart bgwhite">
-                    <table class="table-shopping-cart">
-                        <tr class="table-head">
-                            <th class="column-1"></th>
-                            <th class="column-2">Product</th>
-                            <th class="column-3">Price</th>
-                            <th class="column-4 p-l-70">Quantity</th>
-                            <th class="column-5">Total</th>
-                        </tr>
-                        @foreach($data as $item)
-                            <tr class="table-row">
-                                <td class="column-1">
-                                    <div class="cart-img-product b-rad-4 o-f-hidden">
-                                        <img src="{{url('storage/gambar/'.$item->attributes['gambar'])}}"
-                                             alt="IMG-PRODUCT">
-                                    </div>
-                                </td>
-                                <td class="column-2">{{$item->name}}</td>
-                                <td class="column-3">Rp. {{number_format($item->price,0,".",".")}}</td>
-                                <td class="column-4">
-                                    <div class="flex-w bo5 of-hidden w-size17">
-                                        <button class="btn-num-product-down color1 flex-c-m size7 bg8 eff2">
-                                            <i class="fs-12 fa fa-minus" aria-hidden="true"></i>
-                                        </button>
+            <div class="breadcrumb-content">
+                <nav aria-label="breadcrumb">
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Cart</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb Ends -->
 
-                                        <input class="size8 m-text18 t-center num-product" type="number"
-                                               name="num-product1"
-                                               value="{{$item->quantity}}">
-
-                                        <button class="btn-num-product-up color1 flex-c-m size7 bg8 eff2">
-                                            <i class="fs-12 fa fa-plus" aria-hidden="true"></i>
-                                        </button>
-                                    </div>
-                                </td>
-                                <td class="column-5">
-                                    Rp. {{number_format($item->quantity * $item->price,0,".",".")}}</td>
+    <!-- cart -->
+    <section id="cart-main" class="cart-main">
+        <div class="container">
+            <div class="cart-inner">
+                <div class="cart-table-list">
+                    <div class="order-list">
+                        <table class="shop_table rt-checkout-review-order-table">
+                            <thead>
+                            <tr>
+                                <th>No</th>
+                                <th class="product-name">Product</th>
+                                <th class="product-price">Price</th>
+                                <th class="product-quantity">Quantity</th>
+                                <th class="product-total">Total</th>
                             </tr>
-                        @endforeach
-                    </table>
-                </div>
-            </div>
-            {{--            @if(count($data) > 0)--}}
-            <div class="flex-w flex-sb-m p-t-25 p-b-25 bo8 p-l-35 p-r-60 p-lr-15-sm">
-                <div class="flex-w flex-m w-full-sm">
-                    <div class="size10 trans-0-4 m-t-10 m-b-10 m-r-10">
-                        <a href="/cart/clear">
-                            <button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
-                                Cancel
-                            </button>
-                        </a>
-                    </div>
+                            </thead>
+                            <tbody>
+                            @php $no = 1 @endphp
+                            @foreach($data as $item)
+                                <tr>
+                                    <td>{{ $no++ }}</td>
 
-                    <div class="size12 trans-0-4 m-t-10 m-b-10 m-r-10">
-                        <!-- Button -->
-                        <a href="/beli">
-                            <button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
-                                Checkout
-                            </button>
-                        </a>
+                                    <td class="cart_item">
+                                       <span class="product-thumbnail">
+                                            <img src="images/gallery/thumb1-1.jpg" alt="">
+                                        </span>
+                                        <span class="product-name">{{$item->name}}&nbsp;</span>
+                                    </td>
+
+                                    <td><span class="rt-Price-amount"><span>Rp.</span>{{number_format($item->price,0,".",".")}}</span>
+                                    </td>
+
+                                    <td>
+                                        <span class="quantity-buttons">
+                                            <input type="number" class="quantity-input" name="quantity" min="1" max="50"
+                                                   placeholder="No." value="{{$item->quantity}}">
+                                        </span>
+                                    </td>
+
+                                    <td class="cart-subtotal">
+                                        <span class="rt-Price-amount"><span>Rp.</span>{{number_format($item->quantity*$item->price,0,".",".")}}
+                                        </span>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
+
+                <div class="checkout-order">
+                    <div class="section-title">
+                        <h3 class="mar-bottom-20">Cart Totals</h3>
+                    </div>
+                    <div class="order-list">
+                        <table class="shop_table rt-checkout-review-order-table">
+                            <thead>
+                            <tr>
+                                <th class="product-name">Product</th>
+                                <th class="product-total">Total</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @php $total = 0; @endphp
+                            @foreach($data as $item)
+                                <tr class="cart_item">
+                                    <td class="product-name">
+                                        {{$item->name}}&nbsp; <strong
+                                                class="product-quantity">× {{$item->quantity}}</strong></td>
+                                    <td class="product-total">
+                                        <span class="rt-Price-amount"><span>Rp.</span>{{number_format($item->price * $item->quantity,0,".",".")}}</span>
+                                    </td>
+                                </tr>
+                                @php $total += ($item->price * $item->quantity) @endphp
+                            @endforeach
+                            </tbody>
+                            <tfoot>
+
+                            <tr class="order-total">
+                                <th>Total</th>
+                                <td>
+                                    <span class="rt-Price-amount"><span>Rp.</span>{{number_format($total,0,".",".")}}</span>
+                                </td>
+                            </tr>
+
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="checkout-place-order">
+                    <p>Your personal data will be used to process your order, support your experience throughout this
+                        website, and for other purposes described in our <a href="#">privacy policy</a>.
+                    </p>
+                    <a href="/beli">
+                        <button type="submit" class="btn-red">Proceed to Checkout</button>
+                    </a>
+                    <a href="/cart/clear" style="margin-left: 20px;">
+                        <button type="submit" class="btn-dark" style="font-style: bold">Cancel</button>
+                    </a>
+                </div>
             </div>
-            {{--@endif--}}
         </div>
     </section>
 @endsection

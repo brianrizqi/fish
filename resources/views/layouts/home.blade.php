@@ -1,86 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zxx">
+
 <head>
-    <title>@yield('title')</title>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="{{url('images/icons/favicon.png')}}"/>
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{url('vendor/bootstrap/css/bootstrap.min.css')}}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{url('fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{url('fonts/themify/themify-icons.css')}}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{url('fonts/Linearicons-Free-v1.0.0/icon-font.min.css')}}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{url('fonts/elegant-font/html-css/style.css')}}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{url('vendor/animate/animate.css')}}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{url('vendor/css-hamburgers/hamburgers.min.css')}}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{url('vendor/animsition/css/animsition.min.css')}}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{url('vendor/select2/select2.min.css')}}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{url('vendor/daterangepicker/daterangepicker.css')}}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{url('vendor/slick/slick.css')}}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{url('vendor/lightbox2/css/lightbox.min.css')}}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{url('css/util.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{url('css/main.css')}}">
-    <!--===============================================================================================-->
+
+    <title>@yield('title')</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{{url('images/favicon.png')}}">
+    <!-- Bootstrap core CSS -->
+    <link href="{{url('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+    <!--Custom CSS-->
+    <link href="{{url('css/style.css')}}" rel="stylesheet" type="text/css">
+    <!--Plugin CSS-->
+    <link href="{{url('css/plugin.css')}}" rel="stylesheet" type="text/css">
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body class="animsition">
+<body id="tech" class="no-tag">
 
 <!-- Header -->
-<header class="header3">
-    <!-- Header desktop -->
-    <div class="container-menu-header-v3">
-        <div class="wrap_header3 p-t-74">
-            <!-- Logo -->
-            <a href="/" class="logo3">
-                <img src="{{url('images/icons/logo.png')}}" alt="IMG-LOGO">
-            </a>
+<header>
+    <div class="upper-head clearfix">
+        <div class="container">
+            <div class="header-date">
+                <p><i class="icon-clock"></i> {{date('D')}}, {{date('d F Y')}}</p>
+                <p><i class="icon-cloud"></i> Jember, East Java</p>
+            </div>
+            <ul class="header-social-links pull-right">
+                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+<!-- Header Ends -->
 
-            <div class="header-icons3 p-t-38 p-b-60 p-l-8">
-                <a href="/cart" class="header-wrapicon1 dis-block">
-                    <img src="{{url('images/icons/icon-header-02.png')}}" class="header-icon1" alt="ICON">
-                    {{--<span class="header-icons-noti"></span>--}}
-                </a>
+<!-- Navigation Bar -->
+<div class="navigation">
+    <div class="container">
+        <div class="navigation-content">
+            <div class="header_menu">
+                <!-- start Navbar (Header) -->
+                <nav class="navbar navbar-default navbar-sticky-function navbar-arrow">
+                    <div class="logo pull-left">
+                        <a href="index.html"><img alt="Image" src="images/logo1.png"></a>
+                    </div>
+                    <div id="navbar" class="navbar-nav-wrapper pull-right">
 
-                <span class="linedivide1"></span>
+                        <ul class="nav navbar-nav" id="responsive-menu">
 
-                <div class="header-wrapicon2">
-                    <img src="{{url('images/icons/icon-header-01.png')}}" class="header-icon1 js-show-header-dropdown"
-                         alt="ICON">
-                    <!-- Header cart noti -->
-                    <div class="header-cart header-dropdown">
-                        <div class="header-cart-buttons">
+                            <li class="{{ Request::segment(1) === '/' ? 'active' : null }}">
+                                <a href="/">Home</a>
+                            </li>
+                            <li class="{{ Request::segment(1) === 'produk' ? 'active' : null }}">
+                                <a href="/produk">Product</a>
+                            </li>
+                            <li class="{{ Request::segment(1) === 'about' ? 'active' : null }}">
+                                <a href="/about">About Us</a>
+                            </li>
+                            <li class="{{ Request::segment(1) === 'contact' ? 'active' : null }}">
+                                <a href="/contact">Contact Us</a>
+                            </li>
                             @guest
-                                <div class="header-cart-wrapbtn">
-                                    <!-- Button -->
+                                <li>
                                     <a href="{{route('login')}}"
                                        class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
                                         {{ __('Login') }}
                                     </a>
-                                </div>
-
-                                <div class="header-cart-wrapbtn">
-                                    <!-- Button -->
+                                </li>
+                                <li>
                                     <a href="{{route('register')}}"
                                        class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
                                         {{ __('Register') }}
                                     </a>
-                                </div>
+                                </li>
                             @else
-                                {{Auth::user()->name}}
-                                <div class="header-cart-wrapbtn">
-                                    <!-- Button -->
+                                <li class="{{ Request::segment(1) === 'cart' ? 'active' : null }}">
+                                    <a href="/cart">Cart</a>
+                                </li>
+                                <li class="{{ Request::segment(1) === 'penjualan' ? 'active' : null }}">
+                                    <a href="/penjualan">Penjualan</a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                       class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+                                        {{Auth::user()->name}}
+                                    </a>
+                                </li>
+                                <li>
                                     <a href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"
@@ -91,290 +101,152 @@
                                           style="display: none;">
                                         @csrf
                                     </form>
-                                </div>
+                                </li>
                             @endguest
+                            <li>
+                                <a id="searchtoggl" class="searchtoggle"><i class="fa fa-search" aria-hidden="true"></i></a>
+                            </li>
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                    <div id="slicknav-mobile"></div>
+                </nav>
+            </div>
+            <div id="searchbar" class="searchbar">
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="search" placeholder="Search Now">
+                        <a href="#"><span class="search_btn"><i class="fa fa-search" aria-hidden="true"></i></span></a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Navigation Bar Ends -->
+
+@yield('content')
+
+<!-- Footer -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-slider">
+            <div class="container">
+                <div class="slider-title text-center">
+                    <h3>Find Us on Instagram</h3>
+                </div>
+                <div class="footer-slider-inner-2">
+                    <div class="footer-slider-item">
+                        <a href="detail.html">
+                            <img alt="Image" src="images/beauty/footer1.jpg">
+
+                        </a>
+                    </div>
+                    <div class="footer-slider-item">
+                        <a href="detail.html">
+                            <img alt="Image" src="images/beauty/footer2.jpg">
+
+                        </a>
+                    </div>
+                    <div class="footer-slider-item">
+                        <a href="detail.html">
+                            <img alt="Image" src="images/beauty/footer3.jpg">
+
+                        </a>
+                    </div>
+                    <div class="footer-slider-item">
+                        <a href="detail.html">
+                            <img alt="Image" src="images/beauty/footer4.jpg">
+
+                        </a>
+                    </div>
+                    <div class="footer-slider-item">
+                        <a href="detail.html">
+                            <img alt="Image" src="images/beauty/footer2.jpg">
+
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="about">
+                            <h3>BlogMag</h3>
+                            <p>amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+                                dolore magna aliquyam erat.</p>
+                            <ul class="header-social-links">
+                                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 col-xs-6">
+                        <div class="categories">
+                            <h3>Categories</h3>
+                            <ul>
+                                <li><a href="#">Entertainment</a></li>
+                                <li><a href="#"></a></li>
+                                <li><a href="#">Polictics</a></li>
+                                <li><a href="#">National</a></li>
+                                <li><a href="index-blog.html">Blog</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 col-xs-6">
+                        <div class="tags">
+                            <h3>Popular Tags</h3>
+                            <ul>
+                                <li><a href="#">Entertainment</a></li>
+                                <li><a href="#"></a></li>
+                                <li><a href="#">Polictics</a></li>
+                                <li><a href="#">National</a></li>
+                                <li><a href="#">International</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="newsletter">
+                            <h3>Newsletter</h3>
+                            <p> Dont Miss Anything</p>
+                            <p>Subscribe to our #newsletter</p>
+                            <form>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="email1" placeholder="Enter Email">
+                                    <a href="#"><span class="search_btn"><i class="fa fa-paper-plane"
+                                                                            aria-hidden="true"></i></span></a>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- Menu -->
-            <div class="wrap_menu">
-                <nav class="menu">
-                    <ul class="main_menu">
-                        <li>
-                            <a href="/">Home</a>
-                        </li>
-
-                        <li>
-                            <a href="/produk">Product</a>
-                        </li>
-
-                        <li>
-                            <a href="/about">About</a>
-                        </li>
-
-                        <li>
-                            <a href="/contact">Contact</a>
-                        </li>
-                        @guest
-                        @else
-                            <li>
-                                <a href="/penjualan">Transaksi</a>
-                            </li>
-                            @if(Auth::user()->id_telegram == null)
-                                <li>
-                                    <a href="/telegram">Daftar Telegram</a>
-                                </li>
-                            @else
-                                <li>
-                                    <a href="#">Edit Telegram</a>
-                                </li>
-                            @endif
-                        @endguest
-                    </ul>
-                </nav>
-            </div>
         </div>
-
-        <div class="bottombar flex-col-c p-b-65">
-            <div class="bottombar-social t-center p-b-8">
-                <a href="#" class="topbar-social-item fa fa-facebook"></a>
-                <a href="#" class="topbar-social-item fa fa-instagram"></a>
-                <a href="#" class="topbar-social-item fa fa-pinterest-p"></a>
-                <a href="#" class="topbar-social-item fa fa-snapchat-ghost"></a>
-                <a href="#" class="topbar-social-item fa fa-youtube-play"></a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Header Mobile -->
-    <div class="wrap_header_mobile">
-        <!-- Logo moblie -->
-        <a href="/home" class="logo-mobile">
-            <img src="images/icons/logo.png" alt="IMG-LOGO">
-        </a>
-
-        <!-- Button show menu -->
-        <div class="btn-show-menu">
-            <!-- Header Icon mobile -->
-            <div class="header-icons-mobile">
-                <a href="#" class="header-wrapicon1 dis-block">
-                    <img src="images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
-                </a>
-
-                <span class="linedivide2"></span>
-
-                <div class="header-wrapicon2">
-                    <a href="/cart">
-                        <img src="images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown"
-                             alt="ICON">
-                        <span class="header-icons-noti">
-                            {{--{{count((array) \Darryldecode\Cart\Cart::getContent())}}--}}
-                        </span>
-                    </a>
+        <div class="footer-copyright">
+            <div class="container">
+                <div class="copyright-content text-center">
+                    <span>Copyright © 2018 <a
+                                href="www.cyclonethemes.com">Cyclone Themes</a> - All Rights reserved</span>
                 </div>
             </div>
-
-            <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
-					<span class="hamburger-box">
-						<span class="hamburger-inner"></span>
-					</span>
-            </div>
         </div>
     </div>
+    <div class="footer-overlay"></div>
+</footer>
+<!-- Footer Ends -->
 
-    <!-- Menu Mobile -->
-    <div class="wrap-side-menu">
-        <nav class="side-menu">
-            <ul class="main-menu">
-                <li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
-                    <div class="topbar-child2-mobile">
-							<span class="topbar-email">
-								fashe@example.com
-							</span>
-                    </div>
-                </li>
-
-                <li class="item-topbar-mobile p-l-10">
-                    <div class="topbar-social-mobile">
-                        <a href="#" class="topbar-social-item fa fa-facebook"></a>
-                        <a href="#" class="topbar-social-item fa fa-instagram"></a>
-                        <a href="#" class="topbar-social-item fa fa-pinterest-p"></a>
-                        <a href="#" class="topbar-social-item fa fa-snapchat-ghost"></a>
-                        <a href="#" class="topbar-social-item fa fa-youtube-play"></a>
-                    </div>
-                </li>
-
-                <li class="item-menu-mobile">
-                    <a href="/home">Home</a>
-                </li>
-
-                <li class="item-menu-mobile">
-                    <a href="/produk">Product</a>
-                </li>
-
-                <li class="item-menu-mobile">
-                    <a href="/about">About</a>
-                </li>
-
-                <li class="item-menu-mobile">
-                    <a href="/contact">Contact</a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-</header>
-<div class="container1-page">
-    @yield('content')
-    <footer class="bg6 p-t-45 p-b-43 p-l-65 p-r-65 p-lr-0-xl1">
-        <div class="flex-w p-b-90">
-            <div class="w-size6 p-t-30 p-l-15 p-r-15 respon6">
-                <h4 class="s-text12 p-b-30">
-                    GET IN TOUCH
-                </h4>
-
-                <div>
-                    <p class="s-text7 w-size26">
-                        Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us
-                        on (+1) 96 716 6879
-                    </p>
-
-                    <div class="flex-m p-t-30">
-                        <a href="#" class="fs-18 color1 p-r-20 fa fa-facebook"></a>
-                        <a href="#" class="fs-18 color1 p-r-20 fa fa-instagram"></a>
-                        <a href="#" class="fs-18 color1 p-r-20 fa fa-pinterest-p"></a>
-                        <a href="#" class="fs-18 color1 p-r-20 fa fa-snapchat-ghost"></a>
-                        <a href="#" class="fs-18 color1 p-r-20 fa fa-youtube-play"></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="w-size7 p-t-30 p-l-15 p-r-15 respon7">
-            </div>
-
-            <div class="w-size7 p-t-30 p-l-15 p-r-15 respon7">
-                <h4 class="s-text12 p-b-30">
-                    Links
-                </h4>
-
-                <ul>
-                    <li class="p-b-9">
-                        <a href="#" class="s-text7">
-                            Search
-                        </a>
-                    </li>
-
-                    <li class="p-b-9">
-                        <a href="#" class="s-text7">
-                            About Us
-                        </a>
-                    </li>
-
-                    <li class="p-b-9">
-                        <a href="#" class="s-text7">
-                            Contact Us
-                        </a>
-                    </li>
-
-                    <li class="p-b-9">
-                        <a href="#" class="s-text7">
-                            Returns
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="w-size7 p-t-30 p-l-15 p-r-15 respon7">
-            </div>
-
-            <div class="w-size8 p-t-30 p-l-15 p-r-15 respon6">
-                <h4 class="s-text12 p-b-30">
-                    Newsletter
-                </h4>
-
-                <form>
-                    <div class="effect1 w-size9">
-                        <input class="s-text7 bg6 w-full p-b-5" type="text" name="email"
-                               placeholder="email@example.com">
-                        <span class="effect1-line"></span>
-                    </div>
-
-                    <div class="w-size2 p-t-20">
-                        <!-- Button -->
-                        <button class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4">
-                            Subscribe
-                        </button>
-                    </div>
-
-                </form>
-            </div>
-        </div>
-
-        <div class="t-center p-l-15 p-r-15">
-            <div class="t-center s-text8 p-t-20">
-                Copyright © 2019 All rights reserved. | This web is made with <i class="fa fa-heart-o"
-                                                                                 aria-hidden="true"></i> by <a
-                        href="https://onestep.id" target="_blank">One Step</a>
-            </div>
-        </div>
-    </footer>
+<!-- back to top start -->
+<div id="back-to-top">
+    <a href="#"></a>
 </div>
 
-
-<!-- Back to top -->
-<div class="btn-back-to-top bg0-hov" id="myBtn">
-		<span class="symbol-btn-back-to-top">
-			<i class="fa fa-angle-double-up" aria-hidden="true"></i>
-		</span>
-</div>
-
-<!-- Container Selection1 -->
-<div id="dropDownSelect1"></div>
-
-
-<!--===============================================================================================-->
-<script type="text/javascript" src="{{url('vendor/jquery/jquery-3.2.1.min.js')}}"></script>
-<!--===============================================================================================-->
-<script type="text/javascript" src="{{url('vendor/animsition/js/animsition.min.js')}}"></script>
-<!--===============================================================================================-->
-<script type="text/javascript" src="{{url('vendor/bootstrap/js/popper.js')}}"></script>
-<script type="text/javascript" src="{{url('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
-<!--===============================================================================================-->
-<script type="text/javascript" src="{{url('vendor/select2/select2.min.js')}}"></script>
-<script type="text/javascript">
-    $(".selection-1").select2({
-        minimumResultsForSearch: 20,
-        dropdownParent: $('#dropDownSelect1')
-    });
-</script>
-<!--===============================================================================================-->
-<script type="text/javascript" src="{{url('vendor/slick/slick.min.js')}}"></script>
-<script type="text/javascript" src="{{url('js/slick-custom.js')}}"></script>
-<!--===============================================================================================-->
-<script type="text/javascript" src="{{url('vendor/countdowntime/countdowntime.js')}}"></script>
-<!--===============================================================================================-->
-<script type="text/javascript" src="{{url('vendor/lightbox2/js/lightbox.min.js')}}"></script>
-<!--===============================================================================================-->
-<script type="text/javascript" src="{{url('vendor/sweetalert/sweetalert.min.js')}}"></script>
-<script type="text/javascript">
-    $('.block2-btn-addcart').each(function () {
-        var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
-        $(this).on('click', function () {
-            swal(nameProduct, "is added to cart !", "success");
-        });
-    });
-
-    $('.block2-btn-addwishlist').each(function () {
-        var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
-        $(this).on('click', function () {
-            swal(nameProduct, "is added to wishlist !", "success");
-        });
-    });
-</script>
-
-<!--===============================================================================================-->
-<script src="{{url('js/main.js')}}"></script>
-
+<!-- *Scripts* -->
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/plugin.js"></script>
+<script src="js/main.js"></script>
+<script src="js/custom-mixitup.js"></script>
 </body>
 </html>

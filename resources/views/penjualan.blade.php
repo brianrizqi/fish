@@ -1,40 +1,64 @@
 @extends('layouts.home')
-@section('title','Transaksi')
+@section('title','Penjualan')
 @section('content')
-    <section class="cart bgwhite p-t-70 p-b-100">
+    <div class="breadcrumb_wrapper">
         <div class="container">
-            <div class="container-table-cart pos-relative">
-                <div class="wrap-table-shopping-cart bgwhite">
-                    <table class="table-shopping-cart">
-                        <tr class="table-head">
-                            <th class="column-1">Tanggal</th>
-                            <th class="column-2">Total Harga</th>
-                            <th class="column-3">Status</th>
-                            <th class="column-4">Aksi</th>
-                        </tr>
-                        @foreach($penjualan as $item)
-                            <tr class="table-row">
-                                <td class="column-1">
-                                    {{$item->tanggal}}
-                                </td>
-                                <td class="column-2">
-                                    {{$item->total_harga}}
-                                </td>
-                                <td class="column-3">
-                                    @if($item->status == 0)
-                                        Belum Di Verifikasi
-                                    @else
-                                        Sudah Di Verifikasi
-                                    @endif
-                                </td>
-                                <td class="column-4">
-                                    <a href="/penjualan/{{$item->id_penjualan}}" class="btn btn-primary">
-                                        Detail
-                                    </a>
-                                </td>
+            <div class="breadcrumb-content">
+                <nav aria-label="breadcrumb">
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Penjualan</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb Ends -->
+
+    <!-- cart -->
+    <section id="cart-main" class="cart-main">
+        <div class="container">
+            <div class="cart-inner">
+                <div class="cart-table-list">
+                    <div class="order-list">
+                        <table class="shop_table rt-checkout-review-order-table">
+                            <thead>
+                            <tr>
+                                <th>No</th>
+                                <th class="product-name">Tanggal</th>
+                                <th class="product-price">Total Harga</th>
+                                <th class="product-quantity">Status</th>
+                                <th class="product-total">Aksi</th>
                             </tr>
-                        @endforeach
-                    </table>
+                            </thead>
+                            <tbody>
+                            @php $no = 1 @endphp
+                            @foreach($penjualan as $item)
+                                <tr>
+                                    <td>{{$no++}}</td>
+                                    <td>
+                                        {{$item->tanggal}}
+                                    </td>
+                                    <td>
+                                        <span class="rt-Price-amount"><span>Rp.</span>{{number_format($item->total_harga,0,".",".")}}</span>
+                                    </td>
+                                    <td>
+                                        @if($item->status == 0)
+                                            Belum Di Verifikasi
+                                        @else
+                                            Sudah Di Verifikasi
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <a href="/penjualan/{{$item->id_penjualan}}" class="btn btn-primary">
+                                            Detail
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

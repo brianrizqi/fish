@@ -1,95 +1,88 @@
 @extends('layouts.home')
 @section('title','Produk')
 @section('content')
-    <!-- Content page -->
-    <section class="bgwhite p-t-55 p-b-65">
+    <div class="breadcrumb_wrapper">
         <div class="container">
+            <div class="breadcrumb-content">
+                <nav aria-label="breadcrumb">
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Product</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb Ends -->
+
+    <!-- store -->
+    <section id="our_store" class="our_store">
+        <div class="container">
+
             <div class="row">
-                <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
-                    <div class="leftbar p-r-20 p-r-0-sm">
-                        <!--  -->
-                        <h4 class="m-text14 p-b-7">
-                            {{--Categories--}}
-                        </h4>
-
-                        <ul class="p-b-54">
-                            <li class="p-t-4">
-                                <a href="#" class="s-text13 active1">
-                                    {{--All--}}
-                                </a>
-                            </li>
-
-                            <li class="p-t-4">
-                                <a href="#" class="s-text13">
-                                    {{--Women--}}
-                                </a>
-                            </li>
-
-                            <li class="p-t-4">
-                                <a href="#" class="s-text13">
-                                    {{--Men--}}
-                                </a>
-                            </li>
-
-                            <li class="p-t-4">
-                                <a href="#" class="s-text13">
-                                    {{--Kids--}}
-                                </a>
-                            </li>
-
-                            <li class="p-t-4">
-                                <a href="#" class="s-text13">
-                                    {{--Accesories--}}
-                                </a>
-                            </li>
-                        </ul>
-
-
-                    </div>
-                </div>
-
-                <div class="col-sm-12 col-md-8 col-lg-9 p-b-50">
-                    <!--  -->
-                    <div class="flex-sb-m flex-w p-b-35">
-                        <div class="search-product pos-relative bo4 of-hidden">
-                            <input class="s-text7 size6 p-l-23 p-r-50" type="text" name="search-product"
-                                   placeholder="Search Products...">
-
-                            <button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
-                                <i class="fs-12 fa fa-search" aria-hidden="true"></i>
-                            </button>
-                        </div>
-                        <span class="s-text8 p-t-5 p-b-5">
-							Showing 1–12 of 16 results
-						</span>
-                    </div>
-
-                    <!-- Product -->
-                    <div class="row">
-                        @foreach($produk as $item)
-                            <div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
-                                <!-- Block2 -->
-                                <div class="block2">
-                                    <div class="block2-img wrap-pic-w of-hidden pos-relative">
-                                        <img src="{{url('storage/gambar/'.$item->gambar)}}" alt="IMG-PRODUCT" style="width: 228px; height: 250px;">
-                                    </div>
-
-                                    <div class="block2-txt p-t-20">
-                                        <a href="/detail_produk/{{$item->id_produk}}" class="block2-name dis-block s-text3 p-b-5">
-                                            {{$item->nama_produk}}
-                                        </a>
-
-                                        <span class="block2-price m-text6 p-r-5">
-										Rp. {{number_format($item->harga_jual,0,".",".")}}
-									</span>
+                @foreach($produk as $item)
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="rt-product-wrapper">
+                            <div class="product-thumbnail-wrapper">
+                                <div class="product-image">
+                                    <img src="{{url('storage/gambar/'.$item->gambar)}}" class="" alt="product-list"
+                                    style="width: 100%; height: 250px;">
+                                </div>
+                                <div class="product-label"><span class="onsale">Sale</span></div>
+                            </div>
+                            <div class="rt-product-meta-wrapper">
+                                <h3 class="product_title">
+{{--                                    <a href="store-detail.html">--}}
+                                        {{$item->nama_produk}}
+{{--                                    </a>--}}
+                                </h3>
+                                <div class="rt-cartprice-wrapper">
+                                <span class="price mar-bottom-20">
+                                        <span class="rrt-price-amount">
+                                            <ins>
+                                                <span>Rp.</span>{{number_format($item->harga_jual,0,".",".")}}
+                                            </ins>
+                                        </span>
+                                </span>
+                                    <div class="button">
+                                        <a href="/detail_produk/{{$item->id_produk}}" class="btn-white btn-red">Detail</a>
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
+                        </div>
+                    </div>
+                @endforeach
+            </div>
 
+            <div class="row"><!-- pagination -->
+                <div class="col-md-12">
+                    <div class="pagination-div text-center">
+                        <ul class="pagination">
+                            <li class="prev">
+                                <a href="#"> <i class="fa fa-angle-double-left"></i> </a>
+                            </li>
+                            <li>
+                                <a href="#">1</a>
+                            </li>
+                            <li class="active">
+                                <a href="#">2</a>
+                            </li>
+                            <li>
+                                <a href="#">3</a>
+                            </li>
+                            <li>
+                                <a href="#">...</a>
+                            </li>
+                            <li>
+                                <a href="#">10</a>
+                            </li>
+                            <li class="next">
+                                <a href="#"> <i class="fa fa-angle-double-right"></i> </a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-            </div>
+            </div><!-- End pagination -->
         </div>
     </section>
 @endsection

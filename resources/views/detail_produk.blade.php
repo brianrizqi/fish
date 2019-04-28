@@ -1,80 +1,80 @@
 @extends('layouts.home')
 @section('title','Produk')
 @section('content')
-    <div class="container bgwhite p-t-35 p-b-80">
-        <div class="flex-w flex-sb">
-            <div class="w-size13 p-t-30 respon5">
-                <div class="wrap-slick3 flex-sb flex-w">
-                    <div class="item-slick3">
-                        <div class="wrap-pic-w">
-                            <img src="{{url('storage/gambar/'.$produk->gambar)}}" alt="IMG-PRODUCT">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="w-size14 p-t-30 respon5">
-                <h4 class="product-detail-name m-text16 p-b-13">
-                    {{$produk->nama_produk}}
-                </h4>
-
-                <span class="m-text17">
-					Rp. {{number_format($produk->harga_jual,0,".",".")}}
-				</span>
-
-                <!--  -->
-                <div class="p-t-33 p-b-60">
-
-                    <div class="flex-r-m flex-w p-t-10">
-                        <div class="w-size16 flex-m flex-w">
-                            <form method="POST" action="/cart/{{$produk->id_produk}}">
-                                <div class="flex-w bo5 of-hidden m-r-22 m-t-10 m-b-10">
-                                    <button class="btn-num-product-down color1 flex-c-m size7 bg8 eff2">
-                                        <i class="fs-12 fa fa-minus" aria-hidden="true"></i>
-                                    </button>
-
-                                    <input class="size8 m-text18 t-center num-product" type="number" name="jumlah"
-                                           value="1">
-
-                                    <button class="btn-num-product-up color1 flex-c-m size7 bg8 eff2">
-                                        <i class="fs-12 fa fa-plus" aria-hidden="true"></i>
-                                    </button>
-                                </div>
-
-                                <div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10">
-                                    <!-- Button -->
-                                    {{--@guest--}}
-                                        {{--<a href="/login" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">--}}
-                                            {{--Add to Cart--}}
-                                        {{--</a>--}}
-                                    {{--@elseguest--}}
-                                        <button type="submit"
-                                                class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
-                                            Add to Cart
-                                        </button>
-                                    {{--@endguest--}}
-                                </div>
-                                @csrf
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
-                <!--  -->
-                <div class="wrap-dropdown-content bo6 p-t-15 p-b-14 active-dropdown-content">
-                    <h5 class="js-toggle-dropdown-content flex-sb-m cs-pointer m-text19 color0-hov trans-0-4">
-                        Description
-                        <i class="down-mark fs-12 color1 fa fa-minus dis-none" aria-hidden="true"></i>
-                        <i class="up-mark fs-12 color1 fa fa-plus" aria-hidden="true"></i>
-                    </h5>
-
-                    <div class="dropdown-content dis-none p-t-15 p-b-23">
-                        <p class="s-text8">
-                            {{$produk->deskripsi}}
-                        </p>
-                    </div>
-                </div>
+    <!-- Breadcrumb -->
+    <div class="breadcrumb_wrapper">
+        <div class="container">
+            <div class="breadcrumb-content">
+                <nav aria-label="breadcrumb">
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/produk">Product</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Product Detail</li>
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>
+    <!-- Breadcrumb Ends -->
+
+    <!--store detail -->
+    <section id="store-detail" class="store-detail">
+        <div class="container">
+            <div class="single-product-content">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="thumbnail-images">
+                            <div class="slider slider-store">
+                                <div>
+                                    <img src="{{url('storage/gambar/'.$produk->gambar)}}" alt="1">
+                                </div>
+                            </div>
+                            <div class="slider slider-thumbs">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="single-product-summary">
+                            <div class="entry-summary">
+                                <h2 class="single-product-title">{{$produk->nama_produk}}</h2>
+                                <div class="rt-product-meta-wrapper">
+                                    <span class="price">
+                                        <ins>
+                                            <span class="rt-price-amount">
+                                                <span>Rp.</span>{{number_format($produk->harga_jual,0,".",".")}}
+                                            </span>
+                                        </ins>
+                                    </span>
+                                </div>
+                                <div class="product-details_short-description mar-top-30">
+                                    <p>{{$produk->deskripsi}}</p>
+                                </div>
+
+                                <form method="POST" action="/cart/{{$produk->id_produk}}">
+
+                                    <div class="quantity-buttons">
+                                        <label class="screen-reader-text">Quantity</label>
+                                        <input type="number" class="quantity-input" name="jumlah"
+                                               min="1" max="{{$produk->jumlah}}" placeholder="No.">
+                                    </div>
+
+                                    <button type="submit" name="add-to-cart" value="1605" class="btn-white btn-red">Add to cart</button>
+                                    @csrf
+                                </form>
+
+                                <div class="product_meta mar-top-30">
+
+                                    <span class="sku_wrapper">Jumlah: <span class="sku">{{$produk->jumlah}}</span></span>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+        <br>
 @endsection
