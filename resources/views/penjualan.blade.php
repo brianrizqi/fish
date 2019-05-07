@@ -6,7 +6,7 @@
             <div class="breadcrumb-content">
                 <nav aria-label="breadcrumb">
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('welcome')}}">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Penjualan</li>
                     </ul>
                 </nav>
@@ -50,7 +50,8 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="/penjualan/{{$item->id_penjualan}}" class="btn btn-primary">
+                                        <a href="{{route('detail_penjualan',['id'=>$item->id_penjualan])}}"
+                                           class="btn btn-primary">
                                             Detail
                                         </a>
                                     </td>

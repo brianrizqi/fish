@@ -13,7 +13,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h5 style="display: inline">Tabel Supplier</h5>
-                        <a href="/ikan/create" class="btn btn-primary float-right">Tambah</a>
+                        <a href="{{route('tambah_ikan')}}" class="btn btn-primary float-right">Tambah</a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -31,13 +31,13 @@
                                         <td>{{$item->ikan}}</td>
                                         <td>{{$item->stok}}</td>
                                         <td>
-                                            <form action="/ikan/edit/{{$item->id_ikan}}"
+                                            <form action="{{route('edit_ikan',['id'=>$item->id_ikan])}}"
                                                   style="display: inline">
                                                 <button class="btn btn-primary">
                                                     <i class="fa fa-pencil-alt"></i>
                                                 </button>
                                             </form>
-                                            <form action="/ikan/{{$item->id_ikan}}" method="POST"
+                                            <form action="{{route('hapus_ikan',['id'=>$item->id_ikan])}}" method="POST"
                                                   style="display: inline">
                                                 <button class="btn btn-danger">
                                                     <i class="fa fa-trash"></i>

@@ -90,42 +90,45 @@
                         </li>
                         <li class="nav-item ">
                             <a class="nav-link {{ Request::segment(1) === 'home' ? 'active' : null }}"
-                               href="/home"><i class="fa fa-fw fa-home"></i>Dashboard <span class="badge badge-success">6</span></a>
+                               href="{{route('home')}}"><i class="fa fa-fw fa-home"></i>Dashboard <span
+                                        class="badge badge-success">6</span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ Request::segment(1) === 'supplier' ? 'active' : null }}"
-                               href="/supplier"><i class="fa fa-fw fa-user-circle"></i>Supplier</a>
+                               href="{{route('supplier')}}"><i class="fa fa-fw fa-user-circle"></i>Supplier</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ Request::segment(1) === 'customer' ? 'active' : null }}"
-                               href="/customer"><i class="fa fa-fw fa-user-circle"></i>Customer</a>
+                               href="{{route('customer')}}"><i class="fa fa-fw fa-user-circle"></i>Customer</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ Request::segment(1) === 'ikan' ? 'active' : null }}"
-                               href="/ikan"><i class="fas fa-fw fa-chart-pie"></i>Ikan</a>
+                               href="{{route('ikan')}}"><i class="fas fa-fw fa-chart-pie"></i>Ikan</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ Request::segment(1) === 'produk' ? 'active' : null }}"
-                               href="/produk"><i class="fas fa-fw fa-chart-pie"></i>Produk</a>
+                               href="{{route('produk')}}"><i class="fas fa-fw fa-chart-pie"></i>Produk</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ Request::segment(1) === 'pembelian' ? 'active' : null }}"
-                               href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2"><i class="fa fa-fw fa-rocket"></i>Pembelian</a>
+                               href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2"
+                               aria-controls="submenu-2"><i class="fa fa-fw fa-rocket"></i>Pembelian</a>
                             <div id="submenu-2" class="collapse submenu" style="">
                                 <ul class="nav flex-column">
                                     <li class="nav-item">
                                         <a class="nav-link"
-                                           href="/pembelian">Pembelian <span class="badge badge-secondary">New</span></a>
+                                           href="{{route('pembelian')}}">Pembelian <span
+                                                    class="badge badge-secondary">New</span></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="/pengadaan">Pengadaan</a>
+                                        <a class="nav-link" href="{{route('pengadaan')}}">Pengadaan</a>
                                     </li>
                                 </ul>
                             </div>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ Request::segment(1) === 'penjualan' ? 'active' : null }}"
-                               href="/penjualan"><i class="fab fa-fw fa-wpforms"></i>Penjualan</a>
+                               href="{{route('penjualan')}}"><i class="fab fa-fw fa-wpforms"></i>Penjualan</a>
                         </li>
                     </ul>
                 </div>

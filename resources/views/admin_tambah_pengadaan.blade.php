@@ -6,7 +6,7 @@
             <div class="card">
                 <h5 class="card-header">Form Pengadaan</h5>
                 <div class="card-body">
-                    <form method="POST" action="/pembelian/ikan" id="basicform" enctype="multipart/form-data">
+                    <form method="POST" action="{{route('create_ikan')}}" id="basicform" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="inputUserName">Nama Ikan</label>
                             <select name="nama_produk" class="form-control">

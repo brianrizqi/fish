@@ -6,7 +6,7 @@
             <div class="card">
                 <h5 class="card-header">Form Ikan</h5>
                 <div class="card-body">
-                    <form method="POST" action="/ikan" id="basicform">
+                    <form method="POST" action="{{route('store_ikan')}}" id="basicform">
                         <div class="form-group">
                             <label for="inputUserName">Nama Ikan</label>
                             <input type="text" name="ikan" data-parsley-trigger="change"

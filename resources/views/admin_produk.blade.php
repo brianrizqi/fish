@@ -8,7 +8,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h5 style="display: inline">Produk</h5>
-                            <a href="/produk/tambah" class="btn btn-primary float-right">Tambah</a>
+                            <a href="{{route('tambah_produk')}}" class="btn btn-primary float-right">Tambah</a>
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -30,7 +30,7 @@
                                                         Rp. {{number_format($item->harga_jual,0,".",".")}}</div>
                                                 </div>
                                                 <div class="product-btn">
-                                                    <a href="/produk/{{$item->id_produk}}"
+                                                    <a href="{{route('edit_produk',['id'=>$item->id_produk])}}"
                                                        class="btn btn-primary">Edit</a>
                                                     <a href="#" class="btn btn-outline-light">Details</a>
                                                 </div>

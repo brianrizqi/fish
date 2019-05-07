@@ -7,8 +7,8 @@
                 <div class="card">
                     <div class="card-header">
                         <h5 style="display: inline">Tabel Pengadaan</h5>
-                        <a href="/pembelian/tambah" class="btn btn-primary float-right">Tambah</a>
-                        <a href="/pembelian/clear" class="btn btn-danger float-right" style="margin-right: 10px;">Bersihkan</a>
+                        <a href="{{route('tambah_pembelian')}}" class="btn btn-primary float-right">Tambah</a>
+                        <a href="{{route('clear_pembelian')}}" class="btn btn-danger float-right" style="margin-right: 10px;">Bersihkan</a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -46,7 +46,7 @@
                 <div class="card">
                     <h5 class="card-header">Basic Form</h5>
                     <div class="card-body">
-                        <form action="/pembelian" method="POST" id="basicform" data-parsley-validate="">
+                        <form action="{{route('store_pembelian')}}" method="POST" id="basicform" data-parsley-validate="">
                             <div class="form-group">
                                 <label for="inputUserName">Tanggal</label>
                                 <input id="inputUserName" type="date" name="tanggal" data-parsley-trigger="change"

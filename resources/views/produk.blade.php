@@ -6,7 +6,7 @@
             <div class="breadcrumb-content">
                 <nav aria-label="breadcrumb">
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('welcome')}}">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Product</li>
                     </ul>
                 </nav>
@@ -26,15 +26,15 @@
                             <div class="product-thumbnail-wrapper">
                                 <div class="product-image">
                                     <img src="{{url('storage/gambar/'.$item->gambar)}}" class="" alt="product-list"
-                                    style="width: 100%; height: 250px;">
+                                         style="width: 100%; height: 250px;">
                                 </div>
                                 <div class="product-label"><span class="onsale">Sale</span></div>
                             </div>
                             <div class="rt-product-meta-wrapper">
                                 <h3 class="product_title">
-{{--                                    <a href="store-detail.html">--}}
-                                        {{$item->nama_produk}}
-{{--                                    </a>--}}
+                                    {{--                                    <a href="store-detail.html">--}}
+                                    {{$item->nama_produk}}
+                                    {{--                                    </a>--}}
                                 </h3>
                                 <div class="rt-cartprice-wrapper">
                                 <span class="price mar-bottom-20">
@@ -45,7 +45,8 @@
                                         </span>
                                 </span>
                                     <div class="button">
-                                        <a href="/detail_produk/{{$item->id_produk}}" class="btn-white btn-red">Detail</a>
+                                        <a href="{{route('detail_produk',['id'=>$item->id_produk])}}"
+                                           class="btn-white btn-red">Detail</a>
                                     </div>
                                 </div>
                             </div>

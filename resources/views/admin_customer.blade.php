@@ -32,8 +32,8 @@
                                         <td>{{$item->alamat}}</td>
                                         <td>{{$item->no_hp}}</td>
                                         <td>
-                                            <form action="/customer/{{$item->id}}" method="POST"
-                                                  style="display: inline">
+                                            <form action="{{route('hapus_customer',['id'=>$item->id])}}"
+                                                  method="POST" style="display: inline">
                                                 <button class="btn btn-danger">
                                                     <i class="fa fa-trash"></i>
                                                 </button>

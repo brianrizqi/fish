@@ -93,13 +93,19 @@ class PenjualanController extends Controller
             })
                 ->where('id_penjualan', $id)
                 ->get();
-            return view('admin_detail_penjualan', ['detail' => $detail]);
+            $status = Penjualan::where('id_penjualan', $id)
+                ->first();
+            return view('admin_detail_penjualan', [
+                'detail' => $detail,
+                'id' => $id,
+                'status' => $status
+            ]);
         } else {
             $detail = DetailPenjualan::join('produk', function ($join) {
                 $join->on('produk.id_produk', '=', 'detail_penjualan.id_produk');
             })
                 ->where('id_penjualan', $id)
-                ->select('nama_produk','detail_penjualan.jumlah','total_harga','harga_jual')
+                ->select('nama_produk', 'detail_penjualan.jumlah', 'total_harga', 'harga_jual')
                 ->get();
             return view('detail_penjualan', ['detail' => $detail]);
         }
@@ -138,6 +144,15 @@ class PenjualanController extends Controller
     {
         $penjualan = Penjualan::where('id_penjualan', $id);
         $penjualan->delete();
+        return redirect('penjualan');
+    }
+
+    public function verif($id)
+    {
+        $penjualan = Penjualan::where('id_penjualan', $id)
+            ->update([
+                'status' => 1
+            ]);
         return redirect('penjualan');
     }
 }

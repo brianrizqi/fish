@@ -53,16 +53,16 @@
                         <ul class="nav navbar-nav" id="responsive-menu">
 
                             <li class="{{ Request::segment(1) === '/' ? 'active' : null }}">
-                                <a href="/">Home</a>
+                                <a href="{{route('welcome')}}">Home</a>
                             </li>
                             <li class="{{ Request::segment(1) === 'produk' ? 'active' : null }}">
-                                <a href="/produk">Product</a>
+                                <a href="{{route('produk')}}">Product</a>
                             </li>
                             <li class="{{ Request::segment(1) === 'about' ? 'active' : null }}">
-                                <a href="/about">About Us</a>
+                                <a href="{{route('about')}}">About Us</a>
                             </li>
                             <li class="{{ Request::segment(1) === 'contact' ? 'active' : null }}">
-                                <a href="/contact">Contact Us</a>
+                                <a href="{{route('contact')}}">Contact Us</a>
                             </li>
                             @guest
                                 <li>
@@ -79,10 +79,10 @@
                                 </li>
                             @else
                                 <li class="{{ Request::segment(1) === 'cart' ? 'active' : null }}">
-                                    <a href="/cart">Cart</a>
+                                    <a href="{{route('cart')}}">Cart</a>
                                 </li>
                                 <li class="{{ Request::segment(1) === 'penjualan' ? 'active' : null }}">
-                                    <a href="/penjualan">Penjualan</a>
+                                    <a href="{{route('penjualan')}}">Penjualan</a>
                                 </li>
                                 <li>
                                     <a href="#"

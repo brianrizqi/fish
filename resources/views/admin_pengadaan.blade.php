@@ -30,15 +30,15 @@
                                     <tr>
                                         <td>{{$item->nama}}</td>
                                         <td>{{$item->tanggal}}</td>
-                                        <td>{{$item->total}}</td>
+                                        <td>Rp. {{number_format($item->total,0,".",".")}}</td>
                                         <td>
-                                            <form action="/pembelian/{{$item->id_pembelian}}"
+                                            <form action="{{route('detail_pembelian',['id'=>$item->id_pembelian])}}"
                                                   style="display: inline">
                                                 <button class="btn btn-primary">
                                                     <i class="fa fa-eye"></i>
                                                 </button>
                                             </form>
-                                            <form action="/supplier/{{$item->id_supplier}}" method="POST"
+                                            <form action="#" method="POST"
                                                   style="display: inline">
                                                 <button class="btn btn-danger">
                                                     <i class="fa fa-trash"></i>

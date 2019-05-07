@@ -7,7 +7,7 @@
             <div class="breadcrumb-content">
                 <nav aria-label="breadcrumb">
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('welcome')}}">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
                     </ul>
                 </nav>

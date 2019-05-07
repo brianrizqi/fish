@@ -7,8 +7,8 @@
             <div class="breadcrumb-content">
                 <nav aria-label="breadcrumb">
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item"><a href="/produk">Product</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('welcome')}}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('produk')}}">Product</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Product Detail</li>
                     </ul>
                 </nav>
@@ -50,7 +50,7 @@
                                     <p>{{$produk->deskripsi}}</p>
                                 </div>
 
-                                <form method="POST" action="/cart/{{$produk->id_produk}}">
+                                <form method="POST" action="{{route('store_cart',['id'=>$produk->id_produk])}}">
 
                                     <div class="quantity-buttons">
                                         <label class="screen-reader-text">Quantity</label>
@@ -58,13 +58,16 @@
                                                min="1" max="{{$produk->jumlah}}" placeholder="No.">
                                     </div>
 
-                                    <button type="submit" name="add-to-cart" value="1605" class="btn-white btn-red">Add to cart</button>
+                                    <button type="submit" name="add-to-cart" value="1605" class="btn-white btn-red">Add
+                                        to cart
+                                    </button>
                                     @csrf
                                 </form>
 
                                 <div class="product_meta mar-top-30">
 
-                                    <span class="sku_wrapper">Jumlah: <span class="sku">{{$produk->jumlah}}</span></span>
+                                    <span class="sku_wrapper">Jumlah: <span
+                                                class="sku">{{$produk->jumlah}}</span></span>
 
                                 </div>
                             </div>
@@ -76,5 +79,5 @@
             </div>
         </div>
     </section>
-        <br>
+    <br>
 @endsection

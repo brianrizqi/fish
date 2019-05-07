@@ -10,7 +10,7 @@
                 <div class="card">
                     <h5 class="card-header">Tambah Supplier</h5>
                     <div class="card-body">
-                        <form id="validationform" data-parsley-validate="" novalidate="" method="POST" action="/supplier">
+                        <form id="validationform" data-parsley-validate="" novalidate="" method="POST" action="{{route('store_supplier')}}">
                             <div class="form-group row">
                                 <label class="col-12 col-sm-3 col-form-label text-sm-right">Nama</label>
                                 <div class="col-12 col-sm-8 col-lg-6">

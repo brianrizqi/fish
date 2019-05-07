@@ -41,14 +41,14 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <form action="/penjualan/{{$item->id_penjualan}}"
+                                            <form action="{{route('detail_penjualan',['id'=>$item->id_penjualan])}}"
                                                   style="display: inline">
                                                 <button class="btn btn-primary">
                                                     <i class="fa fa-eye"></i>
                                                 </button>
                                             </form>
-                                            <form action="/penjualan/{{$item->id_penjualan}}" method="POST"
-                                                  style="display: inline">
+                                            <form action="{{route('hapus_penjualan',['id'=>$item->id_penjualan])}}"
+                                                  method="POST" style="display: inline">
                                                 <button class="btn btn-danger">
                                                     <i class="fa fa-trash"></i>
                                                 </button>

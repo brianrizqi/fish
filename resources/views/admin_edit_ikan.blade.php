@@ -6,7 +6,7 @@
             <div class="card">
                 <h5 class="card-header">Form Ikan</h5>
                 <div class="card-body">
-                    <form method="POST" action="/ikan/{{$ikan->id_ikan}}/edit" id="basicform">
+                    <form method="POST" action="{{route('update_ikan',['id'=>$ikan->id_ikan])}}" id="basicform">
                         <div class="form-group">
                             <label for="inputUserName">Nama Ikan</label>
                             <input type="text" name="ikan" data-parsley-trigger="change"

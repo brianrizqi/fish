@@ -6,7 +6,7 @@
             <div class="card">
                 <h5 class="card-header">Form Produk</h5>
                 <div class="card-body">
-                    <form method="POST" action="/produk" id="basicform" enctype="multipart/form-data">
+                    <form method="POST" action="{{route('store_produk')}}" id="basicform" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="inputUserName">Nama Produk</label>
                             <input type="text" name="nama_produk" data-parsley-trigger="change"
@@ -30,7 +30,7 @@
                         </div>
                         <div class="form-group">
                             <label for="inputRepeatPassword">Jumlah Ikan yang Dipakai</label>
-                            <input placeholder="Jumlah" type="number" class="form-control">
+                            <input placeholder="Jumlah" type="number" class="form-control" name="jumlah_ikan">
                         </div>
                         <div class="form-group">
                             <label for="inputRepeatPassword">Jumlah Produk</label>

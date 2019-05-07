@@ -80,9 +80,12 @@
                                 <div class="image-overlay"></div>
                             </div>
                             <div class="item-medium-content">
-                                <h3><a href="detail.html">{{$item->nama_produk}}</a></h3>
+                                <h3>
+                                    <a href="{{route('detail_produk',['id'=>$item->id_produk])}}">{{$item->nama_produk}}</a>
+                                </h3>
                                 <div class="author-detail">
-                                    <p><i class="icon-pricetags"></i> Rp. {{number_format($item->harga_jual,0,".",".")}}</p>
+                                    <p><i class="icon-pricetags"></i> Rp. {{number_format($item->harga_jual,0,".",".")}}
+                                    </p>
                                 </div>
                             </div>
                         </div>

@@ -13,7 +13,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h5 style="display: inline">Tabel Supplier</h5>
-                        <a href="/tambah_supplier" class="btn btn-primary float-right">Tambah</a>
+                        <a href="{{route('tambah_supplier')}}" class="btn btn-primary float-right">Tambah</a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -33,13 +33,14 @@
                                         <td>{{$item->alamat}}</td>
                                         <td>{{$item->no_hp}}</td>
                                         <td>
-                                            <form action="/supplier/edit/{{$item->id_supplier}}"
+                                            <form action="{{route('edit_supplier',['id'=>$item->id_supplier])}}"
                                                   style="display: inline">
                                                 <button class="btn btn-primary">
                                                     <i class="fa fa-pencil-alt"></i>
                                                 </button>
                                             </form>
-                                            <form action="/supplier/{{$item->id_supplier}}" method="POST"
+                                            <form action="{{route('hapus_supplier',['id'=>$item->id_supplier])}}"
+                                                  method="POST"
                                                   style="display: inline">
                                                 <button class="btn btn-danger">
                                                     <i class="fa fa-trash"></i>

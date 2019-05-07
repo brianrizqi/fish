@@ -12,10 +12,13 @@
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5 style="display: inline">Tabel Supplier</h5>
-                        <a href="/pembelian/tambah" class="btn btn-primary float-right">Verif</a>
-                        <a href="/pembelian/clear" class="btn btn-danger float-right"
-                           style="margin-right: 10px;">Cancel</a>
+                        <h5 style="display: inline">Tabel Detail Penjualan</h5>
+                        @if($status->status == 0)
+                            <a href="{{route('verif_penjualan',['id'=>$id])}}"
+                               class="btn btn-primary float-right">Verif</a>
+                            <a href="#" class="btn btn-danger float-right"
+                               style="margin-right: 10px;">Cancel</a>
+                        @endif
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">

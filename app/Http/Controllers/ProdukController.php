@@ -55,6 +55,8 @@ class ProdukController extends Controller
      */
     public function store(Request $request)
     {
+        $ikan = Ikan::where('id_ikan', $request->ikan)
+            ->first();
         $gambar = time() . '-' . $request->gambar->getClientOriginalName();
         $request->file('gambar')->storeAs('public/gambar', $gambar);
         $produk = new Produk();
@@ -62,10 +64,15 @@ class ProdukController extends Controller
         $produk->nama_produk = $request->nama_produk;
         $produk->harga_jual = $request->harga_jual;
         $produk->jumlah = $request->jumlah;
+        $produk->jumlah_ikan = $request->jumlah_ikan;
         $produk->tanggal = date('Y-m-d');
         $produk->deskripsi = $request->deskripsi;
         $produk->gambar = $gambar;
         $produk->save();
+        Ikan::where('id_ikan', $request->ikan)
+            ->update([
+                'stok' => $ikan->stok - $request->jumlah_ikan
+            ]);
         return redirect('produk');
     }
 

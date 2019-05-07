@@ -7,7 +7,7 @@
             <div class="breadcrumb-content">
                 <nav aria-label="breadcrumb">
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('welcome')}}">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Cart</li>
                     </ul>
                 </nav>
@@ -110,10 +110,10 @@
                     <p>Your personal data will be used to process your order, support your experience throughout this
                         website, and for other purposes described in our <a href="#">privacy policy</a>.
                     </p>
-                    <a href="/beli">
+                    <a href="{{route('beli')}}">
                         <button type="submit" class="btn-red">Proceed to Checkout</button>
                     </a>
-                    <a href="/cart/clear" style="margin-left: 20px;">
+                    <a href="{{route('clear_cart')}}" style="margin-left: 20px;">
                         <button type="submit" class="btn-dark" style="font-style: bold">Cancel</button>
                     </a>
                 </div>
