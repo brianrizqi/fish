@@ -63,7 +63,7 @@ class ProdukController extends Controller
         $produk->id_ikan = $request->ikan;
         $produk->nama_produk = $request->nama_produk;
         $produk->harga_jual = $request->harga_jual;
-        $produk->jumlah = $request->jumlah;
+        $produk->stok = $request->jumlah;
         $produk->jumlah_ikan = $request->jumlah_ikan;
         $produk->tanggal = date('Y-m-d');
         $produk->deskripsi = $request->deskripsi;
@@ -85,9 +85,9 @@ class ProdukController extends Controller
     public function show($id)
     {
         $produk = Produk::where('id_produk', $id)
-            ->join('ikan', function ($join) {
-                $join->on('ikan.id_ikan', '=', 'produk.id_ikan');
-            })
+//            ->join('ikan', function ($join) {
+//                $join->on('ikan.id_ikan', '=', 'produk.id_ikan');
+//            })
             ->first();
         return view('detail_produk', ['produk' => $produk]);
     }

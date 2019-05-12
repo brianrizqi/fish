@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DetailPenjualan;
 use App\Penjualan;
+use App\Produk;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -149,6 +150,20 @@ class PenjualanController extends Controller
 
     public function verif($id)
     {
+        $detail = DetailPenjualan::where('id_penjualan', $id)
+            ->get();
+        foreach ($detail as $item) {
+            $stok = Produk::where('id_produk', $item->id_produk)
+                ->first();
+            if ($stok->jumlah < $item->jumlah) {
+                return abort(404);
+            } else {
+                $produk = Produk::where('id_produk', $item->id_produk)
+                    ->update([
+                        'jumlah' => $stok->stok - $item->jumlah
+                    ]);
+            }
+        }
         $penjualan = Penjualan::where('id_penjualan', $id)
             ->update([
                 'status' => 1
