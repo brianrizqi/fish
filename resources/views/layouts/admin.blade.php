@@ -130,6 +130,23 @@
                             <a class="nav-link {{ Request::segment(1) === 'penjualan' ? 'active' : null }}"
                                href="{{route('penjualan')}}"><i class="fab fa-fw fa-wpforms"></i>Penjualan</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::segment(1) === 'penjadwalan' ? 'active' : null }}"
+                               href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-3"
+                               aria-controls="submenu-2"><i class="fa fa-fw fa-rocket"></i>Penjadwalan</a>
+                            <div id="submenu-3" class="collapse submenu" style="">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link"
+                                           href="{{route('penjadwalan')}}">Input Penjadwalan <span
+                                                    class="badge badge-secondary">New</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{route('hasil_penjadwalan')}}">Hasil Penjadwalan</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </nav>

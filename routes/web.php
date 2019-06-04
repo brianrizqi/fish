@@ -68,3 +68,5 @@ Route::delete('/penjualan/{id}', 'PenjualanController@destroy')->name('hapus_pen
 Route::get('/telegram', 'UserController@telegram');
 Route::post('/telegram', 'UserController@store');
 
+Route::get('/penjadwalan', 'PenjadwalanController@index')->name('penjadwalan');
+Route::get('/penjadwalan/hasil', 'PenjadwalanController@result')->name('hasil_penjadwalan');
