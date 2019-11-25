@@ -25,8 +25,8 @@
                             <div class="row">
                                 <div class="col-sm-8">
                                     <div class="about-work">
-                                        <h2> Welcome to BlogMag</h2>
-                                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. At vero eos et accusam et justo duo dolores et ea rebum. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+                                        <h2> Selamat Datang di Fresh Fish</h2>
+                                        <p>Indonesia adalah negara yang memiliki keanekaragaman ikan siap pangan. Fresh Fish adalah toko online pertama di Indonesia yang menyediakan berbagai ikan segar siap pangan fresh by order. Terdapat berbagai hidangan ikan segar yang bisa dibeli mulai dari ikan nila, kakap, cumi - cumi, lobster, dan lain - lain. Selain itu, kita juga menyediakan ikan dalam jumlah besar, Happy Shopping!</p>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">

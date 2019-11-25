@@ -17,7 +17,7 @@
                     <!-- Slide Text Layer -->
                     <div class="in_th_021_slide in_th_021_slide_center" data-animation="animated fadeInRight">
                         <div class="home_banner_text">
-                            <h2><a href="detail.html">VR and playable on a console makes it a great</a></h2>
+                            <h2><a href="detail.html">Selamat Datang di Fresh Fish. Happy Shopping!</a></h2>
                             <div class="author-detail author-detail-btn">
                                 <a href="#" class="btn-white">Read More</a>
                             </div>

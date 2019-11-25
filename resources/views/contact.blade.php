@@ -24,7 +24,7 @@
                     <div class="contact-form">
                         <form>
                             <h3>Contact Us</h3>
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+                            <p>Ingin kontak dengan team kami? Kirimkan pesan kepada kami sekarang juga, Terimakasih.</p>
                             <div class="row">
                                 <div class="form-group col-sm-6">
                                     <label for="Name">Name:</label>
@@ -55,13 +55,13 @@
                     <div class="magazine-info">
                         <h3>Contact Info</h3>
                         <div class="magazine-detail">
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr</p>
+                            <p>Stay Connected With Fresh Fish</p>
                             <ul>
-                                <li><i class="fa fa-map-marker"></i> Address</li>
-                                <li><i class="fa fa-envelope-open"></i> info@blogmag.com</li>
-                                <li><i class="fa fa-phone"></i> +123-45-6789</li>
-                                <li><i class="fa fa-fax"></i> +123-456-789</li>
-                                <li><i class="fa fa-star"></i> www.blogmag.com</li>
+                                <li><i class="fa fa-map-marker"></i>Fasilkom, Universitas Jember</li>
+                                <li><i class="fa fa-envelope-open"></i> info@freshfish.com</li>
+                                <li><i class="fa fa-phone"></i> +6282234232948</li>
+                                <li><i class="fa fa-fax"></i> 0331291728</li>
+                                <li><i class="fa fa-star"></i> www.freshfish.com</li>
                             </ul>
                         </div>
                     </div>

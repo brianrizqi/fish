@@ -173,9 +173,8 @@
                 <div class="row">
                     <div class="col-sm-4 col-xs-12">
                         <div class="about">
-                            <h3>BlogMag</h3>
-                            <p>amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-                                dolore magna aliquyam erat.</p>
+                            <h3>Fresh Fish</h3>
+                            <p>Stay Connected With Us. Ikuti kami diberbagai sosial media untuk lebih tahu kegiatan dan promo Fresh Fish, Happy Shopping!</p>
                             <ul class="header-social-links">
                                 <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
                                 <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
@@ -187,10 +186,10 @@
                         <div class="categories">
                             <h3>Categories</h3>
                             <ul>
-                                <li><a href="#">Entertainment</a></li>
+                                <li><a href="#">Fish</a></li>
                                 <li><a href="#"></a></li>
-                                <li><a href="#">Polictics</a></li>
-                                <li><a href="#">National</a></li>
+                                <li><a href="#">Fish</a></li>
+                                <li><a href="#">Fish</a></li>
                                 <li><a href="index-blog.html">Blog</a></li>
                             </ul>
                         </div>
@@ -199,11 +198,11 @@
                         <div class="tags">
                             <h3>Popular Tags</h3>
                             <ul>
-                                <li><a href="#">Entertainment</a></li>
+                                <li><a href="#">Fresh Fish</a></li>
                                 <li><a href="#"></a></li>
-                                <li><a href="#">Polictics</a></li>
-                                <li><a href="#">National</a></li>
-                                <li><a href="#">International</a></li>
+                                <li><a href="#">Fresh Fish</a></li>
+                                <li><a href="#">Fresh Fish</a></li>
+                                <li><a href="#">Fresh Fish</a></li>
                             </ul>
                         </div>
                     </div>
@@ -211,7 +210,7 @@
                         <div class="newsletter">
                             <h3>Newsletter</h3>
                             <p> Dont Miss Anything</p>
-                            <p>Subscribe to our #newsletter</p>
+                            <p>Subscribe to our #freshfish</p>
                             <form>
                                 <div class="form-group">
                                     <input type="text" class="form-control" id="email1" placeholder="Enter Email">
@@ -227,8 +226,8 @@
         <div class="footer-copyright">
             <div class="container">
                 <div class="copyright-content text-center">
-                    <span>Copyright © 2018 <a
-                                href="www.cyclonethemes.com">Cyclone Themes</a> - All Rights reserved</span>
+                    <span>Copyright © 2019 <a
+                                href="#">Fresh Fish</a> - All Rights reserved</span>
                 </div>
             </div>
         </div>
