@@ -39,7 +39,7 @@
                         <div class="ad-content">
                             <img src="images/ad1.jpg" alt="image">
                         </div>
-                        <div class="about-team">
+                        <!-- <div class="about-team">
                             <h3>Our Team</h3>
                             <div class="row">
                                 <div class="col-sm-3">
@@ -71,7 +71,7 @@
                                         </div>
                                         <div class="team-outer">
                                             <div class="team-content">
-                                                <h4>Eva Wati Asri M</h4>
+                                                <h4>Wahyu</h4>
                                             </div>
                                             <div class="team-social-links">
                                                 <ul class="header-social-links">
@@ -81,7 +81,7 @@
                                                 </ul>
                                             </div>
                                             <div class="team-info">
-                                                <h5>162410101024</h5>
+                                                <h5>162410101022</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -93,7 +93,7 @@
                                         </div>
                                         <div class="team-outer">
                                             <div class="team-content">
-                                                <h4>Sarah Tyas P</h4>
+                                                <h4>Tatiana</h4>
                                             </div>
                                             <div class="team-social-links">
                                                 <ul class="header-social-links">
@@ -103,7 +103,7 @@
                                                 </ul>
                                             </div>
                                             <div class="team-info">
-                                                <h5>162410101025</h5>
+                                                <h5>1624101010</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -115,7 +115,7 @@
                                         </div>
                                         <div class="team-outer">
                                             <div class="team-content">
-                                                <h4>Fouriska Mukti N S</h4>
+                                                <h4>Aisyah</h4>
                                             </div>
                                             <div class="team-social-links">
                                                 <ul class="header-social-links">
@@ -125,8 +125,8 @@
                                                 </ul>
                                             </div>
                                             <div class="team-info">
-                                                <h5>162410101030</h5>
-                                            </div>
+                                                <h5>1624101010</h5>
+                                            </div> -->
                                         </div>
                                     </div>
                                 </div>
