@@ -7,8 +7,8 @@
                 <nav aria-label="breadcrumb">
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{route('welcome')}}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('penjualan')}}">Penjualan</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Detail Penjualan</li>
+                        <li class="breadcrumb-item"><a href="{{route('penjualan')}}">Pembelian</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Detail Pembelian</li>
                     </ul>
                 </nav>
             </div>

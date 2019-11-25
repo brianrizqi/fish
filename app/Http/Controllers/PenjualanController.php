@@ -155,12 +155,12 @@ class PenjualanController extends Controller
         foreach ($detail as $item) {
             $stok = Produk::where('id_produk', $item->id_produk)
                 ->first();
-            if ($stok->jumlah < $item->jumlah) {
+            if ($stok->stok < $item->jumlah) {
                 return abort(404);
             } else {
                 $produk = Produk::where('id_produk', $item->id_produk)
                     ->update([
-                        'jumlah' => $stok->stok - $item->jumlah
+                        'stok' => $stok->stok - $item->jumlah
                     ]);
             }
         }

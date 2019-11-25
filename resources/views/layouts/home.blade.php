@@ -82,7 +82,7 @@
                                     <a href="{{route('cart')}}">Cart</a>
                                 </li>
                                 <li class="{{ Request::segment(1) === 'penjualan' ? 'active' : null }}">
-                                    <a href="{{route('penjualan')}}">Penjualan</a>
+                                    <a href="{{route('penjualan')}}">Pembelian</a>
                                 </li>
                                 <li>
                                     <a href="#"

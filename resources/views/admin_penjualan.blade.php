@@ -12,8 +12,8 @@
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5 style="display: inline">Tabel Supplier</h5>
-                        <a href="/tambah_supplier" class="btn btn-primary float-right">Tambah</a>
+                        <h5 style="display: inline">Tabel Penjualan</h5>
+{{--                        <a href="/tambah_supplier" class="btn btn-primary float-right">Tambah</a>--}}
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
