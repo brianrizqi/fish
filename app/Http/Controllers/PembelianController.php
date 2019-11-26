@@ -7,6 +7,7 @@ use App\Ikan;
 use App\Pembelian;
 use App\Produk;
 use App\Supplier;
+use Carbon\Carbon;
 use Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -15,7 +16,6 @@ use Illuminate\Support\Facades\File;
 
 class PembelianController extends Controller
 {
-
 
 
     /**
@@ -135,9 +135,14 @@ class PembelianController extends Controller
      * @param \App\Pembelian $pembelian
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pembelian $pembelian)
+    public function destroy($id)
     {
-        //
+        $pembelian = Pembelian::where('id_pembelian', $id)
+            ->first();
+//        return $pembelian;
+        $pembelian->deleted_at = Carbon::now();
+        $pembelian->save();
+        return redirect()->route('pembelian');
     }
 
     public function clear()

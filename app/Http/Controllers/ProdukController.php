@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Ikan;
 use App\Produk;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Auth;
 use Illuminate\Support\Facades\DB;
 use Session;
 use Cart;
@@ -89,7 +89,11 @@ class ProdukController extends Controller
 //                $join->on('ikan.id_ikan', '=', 'produk.id_ikan');
 //            })
             ->first();
-        return view('detail_produk', ['produk' => $produk]);
+        if (Auth::user()->level == 1) {
+            return view('admin_detail_produk', compact('produk'));
+        } else {
+            return view('detail_produk', ['produk' => $produk]);
+        }
     }
 
     /**

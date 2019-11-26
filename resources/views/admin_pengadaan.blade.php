@@ -38,14 +38,16 @@
                                                     <i class="fa fa-eye"></i>
                                                 </button>
                                             </form>
-                                            <form action="#" method="POST"
-                                                  style="display: inline">
-                                                <button class="btn btn-danger">
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
-                                                {{csrf_field()}}
-                                                <input type="hidden" name="_method" value="DELETE">
-                                            </form>
+{{--                                            <form action="{{route('pembelian.destroy',['id'=>$item->id_pembelian])}}" method="POST"--}}
+{{--                                                  style="display: inline">--}}
+{{--                                                <button >--}}
+{{--                                                    <a href="{{route('pembelian.destroy',['id'=>$item->id_pembelian])}}" class="btn btn-danger">--}}
+{{--                                                    <i class="fa fa-trash" style="color: white"></i>--}}
+{{--                                                    </a>--}}
+{{--                                                </button>--}}
+{{--                                                {{csrf_field()}}--}}
+{{--                                                <input type="hidden" name="_method" value="DELETE">--}}
+{{--                                            </form>--}}
                                         </td>
                                     </tr>
                                 @endforeach

@@ -32,7 +32,7 @@
                                                 <div class="product-btn">
                                                     <a href="{{route('edit_produk',['id'=>$item->id_produk])}}"
                                                        class="btn btn-primary">Edit</a>
-                                                    <a href="#" class="btn btn-outline-light">Details</a>
+                                                    <a href="{{route('detail_produk',['id'=>$item->id_produk])}}" class="btn btn-outline-light">Details</a>
                                                 </div>
                                             </div>
                                         </div>

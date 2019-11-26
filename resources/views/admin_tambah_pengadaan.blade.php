@@ -24,7 +24,7 @@
                         </div>
                         <div class="form-group">
                             <label for="inputRepeatPassword">Jumlah (kg)</label>
-                            <input name="jumlah" placeholder="Jumlah" type="number" class="form-control">
+                            <input name="jumlah" placeholder="Jumlah" type="number" class="form-control" min="1">
                         </div>
                         <div class="row">
                             <div class="col-sm-6 pb-2 pb-sm-4 pb-lg-0 pr-0">

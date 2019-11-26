@@ -58,6 +58,7 @@ Route::post('/pembelian/ikan', 'PembelianController@tambah_ikan')->name('create_
 Route::get('/pembelian/clear', 'PembelianController@clear')->name('clear_pembelian');
 Route::get('/pembelian/{id}', 'PembelianController@detail')->name('detail_pembelian');
 Route::get('/pengadaan', 'PembelianController@pengadaan')->name('pengadaan');
+Route::get('/pembelian/delete/{id}', 'PembelianController@destroy')->name('pembelian.destroy');
 
 Route::get('/beli', 'PenjualanController@store')->name('beli');
 Route::get('/penjualan', 'PenjualanController@index')->name('penjualan');
