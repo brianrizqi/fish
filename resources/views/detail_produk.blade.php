@@ -55,7 +55,7 @@
                                     <div class="quantity-buttons">
                                         <label class="screen-reader-text">Quantity</label>
                                         <input type="number" class="quantity-input" name="jumlah"
-                                               min="1" max="{{$produk->stok}}" placeholder="No.">
+                                               min="1" max="{{$produk->stok}}" placeholder="No." required>
                                     </div>
 
                                     <button type="submit" name="add-to-cart" value="1605" class="btn-white btn-red">Add

@@ -89,8 +89,12 @@ class ProdukController extends Controller
 //                $join->on('ikan.id_ikan', '=', 'produk.id_ikan');
 //            })
             ->first();
-        if (Auth::user()->level == 1) {
-            return view('admin_detail_produk', compact('produk'));
+        if (Auth::check()) {
+            if (Auth::user()->level == 1) {
+                return view('admin_detail_produk', compact('produk'));
+            } else {
+                return view('detail_produk', ['produk' => $produk]);
+            }
         } else {
             return view('detail_produk', ['produk' => $produk]);
         }
