@@ -13,11 +13,12 @@
                 <div class="card">
                     <div class="card-header">
                         <h5 style="display: inline">Tabel Detail Penjualan</h5>
-                        @if($status->status == 0)
+                        @if($status->status == 0 && $status->img != null)
                             <a href="{{route('verif_penjualan',['id'=>$id])}}"
                                class="btn btn-primary float-right">Verif</a>
-                            <a href="#" class="btn btn-danger float-right"
-                               style="margin-right: 10px;">Cancel</a>
+                            <a href="{{route('detail_bukti',['id'=>$id])}}"
+                               class="btn btn-danger float-right"
+                               style="margin-right: 10px;">Bukti Pembayaran</a>
                         @endif
                     </div>
                     <div class="card-body">

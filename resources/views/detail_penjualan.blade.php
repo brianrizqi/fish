@@ -51,6 +51,17 @@
                             @endforeach
                             </tbody>
                         </table>
+                        <br>
+                        @if ($status->status == 0 && $status->img ==null)
+                            <form method="POST" action="{{route('bukti_penjualan',['id'=>$id])}}"
+                                  enctype="multipart/form-data">
+                                <label>Upload Bukti Pembayaran </label>
+                                <input type="file" name="img">
+                                @csrf
+                                <br>
+                                <input type="submit" value="upload" class="btn btn-primary">
+                            </form>
+                        @endif
                     </div>
                 </div>
             </div>

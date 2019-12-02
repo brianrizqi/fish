@@ -13,7 +13,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h5 style="display: inline">Tabel Penjualan</h5>
-{{--                        <a href="/tambah_supplier" class="btn btn-primary float-right">Tambah</a>--}}
+                        {{--                        <a href="/tambah_supplier" class="btn btn-primary float-right">Tambah</a>--}}
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -34,10 +34,12 @@
                                         <td>{{$item->name}}</td>
                                         <td>{{$item->tanggal}}</td>
                                         <td>
-                                            @if($item->status == 0)
+                                            @if($item->status == 0 && $item->img == null)
                                                 {{"Belum Bayar"}}
+                                            @elseif($item->status == 0 && $item->img != null)
+                                                {{"Belum Verifikasi"}}
                                             @else
-                                                {{"Sudah Bayar"}}
+                                                {{"Sudah Verifikasi"}}
                                             @endif
                                         </td>
                                         <td>

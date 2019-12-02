@@ -102,13 +102,15 @@ class PenjualanController extends Controller
                 'status' => $status
             ]);
         } else {
+            $status = Penjualan::where('id_penjualan', $id)
+                ->first();
             $detail = DetailPenjualan::join('produk', function ($join) {
                 $join->on('produk.id_produk', '=', 'detail_penjualan.id_produk');
             })
                 ->where('id_penjualan', $id)
                 ->select('nama_produk', 'detail_penjualan.jumlah', 'total_harga', 'harga_jual')
                 ->get();
-            return view('detail_penjualan', ['detail' => $detail]);
+            return view('detail_penjualan', ['detail' => $detail, 'id' => $id, 'status' => $status]);
         }
     }
 
@@ -169,5 +171,25 @@ class PenjualanController extends Controller
                 'status' => 1
             ]);
         return redirect('penjualan');
+    }
+
+    public function upload(Request $request, $id)
+    {
+        $gambar = time() . '-' . $request->img->getClientOriginalName();
+        $request->file('img')->storeAs('public/bukti', $gambar);
+        $penjualan = Penjualan::where('id_penjualan', $id)
+            ->update([
+                'img' => $gambar
+            ]);
+        return redirect()->route('penjualan');
+    }
+
+    public function detail_bukti($id)
+    {
+        $penjualan = Penjualan::join('users', function ($join) {
+            $join->on('users.id', '=', 'penjualan.id_user');
+        })
+            ->where('id_penjualan', $id)->first();
+        return view('admin_detail_bukti', compact('penjualan'));
     }
 }

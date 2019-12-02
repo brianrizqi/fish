@@ -43,7 +43,9 @@
                                         <span class="rt-Price-amount"><span>Rp.</span>{{number_format($item->total_harga,0,".",".")}}</span>
                                     </td>
                                     <td>
-                                        @if($item->status == 0)
+                                        @if ($item->status == 0 && $item->img ==null)
+                                            Belum bayar
+                                        @elseif($item->status == 0 && $item->img != null)
                                             Belum Di Verifikasi
                                         @else
                                             Sudah Di Verifikasi

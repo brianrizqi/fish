@@ -63,6 +63,8 @@ Route::get('/pembelian/delete/{id}', 'PembelianController@destroy')->name('pembe
 Route::get('/beli', 'PenjualanController@store')->name('beli');
 Route::get('/penjualan', 'PenjualanController@index')->name('penjualan');
 Route::get('/penjualan/{id}', 'PenjualanController@show')->name('detail_penjualan');
+Route::get('/penjualan/bukti/{id}', 'PenjualanController@detail_bukti')->name('detail_bukti');
+Route::post('/penjualan/bukti/{id}', 'PenjualanController@upload')->name('bukti_penjualan');
 Route::get('/penjualan/verif/{id}', 'PenjualanController@verif')->name('verif_penjualan');
 Route::delete('/penjualan/{id}', 'PenjualanController@destroy')->name('hapus_penjualan');
 
