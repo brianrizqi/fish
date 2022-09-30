@@ -5,6 +5,7 @@
 
 ### Laravel 5.x
 
+## sql in database folder
 ## cp .env.example .env
 ## setup your database
 ## php artisan key:generate
