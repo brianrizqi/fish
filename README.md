@@ -9,3 +9,5 @@
 ### cp .env.example .env
 ### setup your database
 ### php artisan key:generate
+
+### don't forget to update this readme in every change you made
