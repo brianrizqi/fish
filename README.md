@@ -11,5 +11,6 @@ This project was created as Supply Chain Management coursework. The idea of this
 - cp .env.example .env
 - setup your database
 - php artisan key:generate
+- php artisan serve
 
 **p.s don't forget to update this readme in every change you made**
